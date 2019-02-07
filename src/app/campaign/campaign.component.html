@@ -1,0 +1,57 @@
+<div name ="main" class="m-4">
+    <div class="row mt-2">
+        <div class="col-sm-10">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active">Campaign</li>
+            </ol>
+        </div>
+        <div class="col-sm-2 d-flex justify-content-between">
+            <div>
+                <button type="button" class="btn btn-success ml-3" (click)="newCampaign()">
+                    Create Campaign
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <ul class="list-group w-100 pl-3 pr-3">
+            <li class="list-group-item"> 
+                <div class="row w-100 d-flex align-items-baseline">
+                    <div class="col-sm-7 text-muted justify-content-between">
+                        Name
+                    </div>
+                    <div class="col-sm-3 text-muted justify-content-between">
+                        Created
+                    </div>
+                    <div class="col-sm-2 text-muted">
+                        <select class="form-control" id="sort" [(ngModel)]="sort" 
+                                (ngModelChange)="onSortChange($event)">
+                            <option value="">Sort By</option>
+                            <option value="name">Name</option>
+                        </select>
+                    </div>
+                </div>
+            </li> 
+            <li class="list-group-item" 
+                *ngFor="let item of campaignList; let currentElementIndex = index"> 
+                <div class="row w-100">
+                    <div class="col-sm-7" (click)="toggleEditMode(currentElementIndex)">
+                        {{item.name}}
+                    </div>
+                    <div class="col-sm-3">
+                        {{item.createdAt | amDateFormat:'dddd, MMMM Do YYYY'}}
+                    </div>
+                    <div class="col-sm-2 d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary" (click)="removeCampaign(item._id)">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary ml-2" 
+                                (click)="toggleEditMode(currentElementIndex)">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </button>
+                    </div>
+                </div>
+            </li>                
+        </ul> 
+    </div>
+</div>

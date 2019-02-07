@@ -1,0 +1,61 @@
+<div class="Sign-In mob-bx" style="background-color:white;background:white">
+    <!-- <div style="background-image: url('{{rc.loginimage.image}}');" class="sinupimg-container">-->
+   <div style="background-image: url('assets/images/other/bg.png');" class="sinupimg-container"></div>
+    <!--<img src="uploads/images/others/bg.png"
+         srcset="uploads/images/others/bg@2x.png 2x, uploads/images/others/bg@3x.png 3x"  class="bg" /> -->
+        <div class="new-sign-up-holder">
+            <div class="senter-text">
+                <a ui-sref="landing"><img class="customapp_icon"  src="assets\images\other/customapp-icon.png"></a>
+                <p class="Connect-with-candida">Connect with candidate faster.</p>
+            </div>
+            <div class="card">
+
+                <form (submit)="login()" role="form" name="form" class="form-validation mt-20" method="post" novalidate>
+                    <div class="card" style="padding:30px">
+                        <div class="form-group">
+                            <input type="username" autocomplete="remember==true?on:off" class="form-control text-input" name="username" placeholder="User Name"  
+                            [(ngModel)]="userName" required>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" autocomplete="remember==true?on:off" placeholder="Password" name="password" class="form-control text-input"  [(ngModel)]="userPassword" required>
+                            
+                        </div>
+
+                        <!--<div ng-show="error" class="alert alert-danger">{{error}}</div>-->
+                        <h3  [hidden] ="!error" class="text-light text-greensea validerr">{{error}}</h3>
+                        <div class="form-group text-left mt-20">
+                            <div class="form-actions d-flex justify-content-between" >
+                                <div class="col-xs-6"><button type="button" class="Forgot-password btn btn-link" >Forgot password ? </button></div>
+                                <div class="col-xs-6 txtright "><button type="submit" class="btn btn-new-primary"><span>Sign In</span></button></div>
+                            </div>
+                        </div>
+                        </div>
+</form>
+                <div style="margin-top:38px" >
+                   
+                    <div class="Social-Media-Login" style="margin-bottom:38px"><div class="divider"></div><span class="socialMedia">Social Media Login</span></div>
+                        <div class="d-flex justify-content-between">
+                        <span class="col-xs-5">
+                            <div class="Rectangle-4">
+                            <i class="fa fa-linkedin linkedin---FontAwesome fa-facebook"></i>
+                            <span class="LinkedIn">LINKEDIN</span>
+                            </div>
+                         </span>
+                        <span class="col-xs-2 or">or</span>
+                        <span class="col-xs-5">
+                            <div class="Rectangle-4-Copy">
+                            <i class="fa facebook-official---FontAwesome fa-facebook-square"></i> 
+                            <span class="Facebook">FACEBOOK</span>
+                           </div>
+                         </span>
+                       </div>
+                 </div>
+       </div>
+
+          </div>
+
+           </div>
+<div class="New-here-Create-Acc signinfooter"><span class="text-style-1">New here ?</span><span ><a class="" ui-sref="signup">Create Account</a></span></div>
+

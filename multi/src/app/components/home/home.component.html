@@ -1,0 +1,73 @@
+<nav class="nav_top"></nav>
+<div mdl-shadow="2">
+    <mdl-layout mdl-layout-fixed-header class="mdl-layout--no-desktop-drawer-button">
+        <mdl-layout-header class="mdl-layout--no-desktop-drawer-button" class="layout-header">
+            <mdl-layout-header-row class="mdl-layout--no-desktop-drawer-button" style="margin: -7px !important;">
+                <div layout="row" flex="100">
+                    <div style="margin-top: 13px;">
+                        <!--img class="image" src="assets\img\logo.png" /-->
+                        <object id="svg1" data="assets\img\logo.svg" type="image/svg+xml"></object>
+                    </div>
+                    <div flex="75" flex-sm="30" flex-sm="5" layout="row" class="menu-div">
+                        <div hide-xs hide-sm>
+                            <nav class="stroke">
+                                <ul>
+                                    <li><a [routerLink]="['/video']" (click)="onVideoClick()" routerLinkActive='md-active'>Video</a></li>
+                                    <li><a [routerLink]="['/peoplecount']" routerLinkActive='md-active'>People Counting</a></li>
+                                    <li><a [routerLink]="['/library']" routerLinkActive='md-active'>Library</a></li>
+                                    <li><a [routerLink]="['/highlights']" routerLinkActive='md-active'>Highlights</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div>
+                        <div flex="100" layout="row" id="userName" layout-fill layout-align="space-between start">
+                            <div flex="87" flex-sm="1" flex-sx="1" hide-xs hide-sm class="userNameDiv">
+                                <span class="user-span">{{UserName}}</span></div>
+
+                            <div flex-sm="80" flex-xs="80" layout="row">
+                                <div class="settings-div">
+                                    <mdl-icon tabindex="0" mdl-tooltip="Settings" mdl-tooltip-position="bottom" (click)="onSettings()" mdl-ripple>settings</mdl-icon>
+                                </div>
+                                <div class="logout-div">
+                                    <button class="blue-btn" (click)="logout()">Logout</button>
+                                    <!--mdl-icon tabindex="0" mdl-tooltip="logout" mdl-tooltip-position="bottom"  mdl-ripple>power_settings_new</mdl-icon-->
+                                </div>
+                            </div>
+                        </div>
+                        <div [hidden]="!isSettings">
+                            <app-settings (buttonClicked)="settingsButtonClick($event)"></app-settings>
+                        </div>
+                    </div>
+                </div>
+            </mdl-layout-header-row>
+        </mdl-layout-header>
+        <mdl-layout-drawer class="menubar-sm">
+            <div style="height: 15%;background-color:#353638;padding-top:10%;border-bottom: 9px solid #9be3ff;">
+                <img class="image" src="assets\img\logo.png">
+                <div class="userNameDivSm">
+                    <span>{{UserName}}</span>
+                </div>
+            </div>
+
+            <div>
+                <nav class="mdl-navigation" style="text-align:center;color:black">
+                    <a [routerLink]="['/video/store']" (click)="onVideoClick()" class="mdl-navigation__link" routerLinkActive='md-active'>Video</a>
+                    <a [routerLink]="['/peoplecount']" class="mdl-navigation__link" routerLinkActive='md-active'>PeopleCounting</a>
+                    <a [routerLink]="['/library']" class="mdl-navigation__link" routerLinkActive='md-active'>Library</a>
+                    <a [routerLink]="['/highlights']" class="mdl-navigation__link" routerLinkActive='md-active'>Highlights</a>
+                </nav>
+            </div>
+        </mdl-layout-drawer>
+        <mdl-layout-content id="layoutMain" infinite-scroll (scrolled)="onScrollDown()" [scrollWindow]="false" [immediateCheck]="false" [infiniteScrollDistance]="3">
+            <div>
+                <md-progress-bar *ngIf="loading" style="margin-top:1px;z-index:10000" class="progress-bar-spacer" mode="indeterminate"></md-progress-bar>
+            </div>
+
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+            <!-- Your content goes here -->
+        </mdl-layout-content>
+    </mdl-layout>
+</div>

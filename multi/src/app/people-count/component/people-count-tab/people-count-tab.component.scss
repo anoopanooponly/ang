@@ -1,0 +1,439 @@
+$sortIndicatorIconColor: #000;
+th.sort {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    min-width: 75px; // th "Year" is too small and sort icon needs extra room
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
+    &:focus {
+        outline: none;
+    }
+    &:after {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        content: "";
+        position: relative;
+        top: -10px;
+        right: -5px;
+    }
+    &.asc:after {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid $sortIndicatorIconColor;
+        content: "";
+        position: relative;
+        top: 4px;
+        right: -5px;
+    }
+    &.desc:after {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid $sortIndicatorIconColor;
+        content: "";
+        position: relative;
+        top: -4px;
+        right: -5px;
+    }
+}
+
+$header_background_color: #aaa;
+$header_text_color: #FDFDFD;
+$alternate_row_background_color: #fff;
+$table_width: 750px;
+$table_body_height: 60vh;
+$column_one_width: 40%;
+$column_two_width: 30%;
+$column_three_width: 30%;
+
+
+/*
+.mdl-tooltip--bottom:active{
+   left: 1399px!important;
+    margin-left: -50.5px !important;
+    top: 480px !important;
+}
+.fixed_headers {
+  width: $table_width;
+  table-layout: fixed;
+  border-collapse: collapse;
+  
+
+  th, td {
+    padding: 5px;
+    text-align: left;
+  }
+  
+  td:nth-child(1), th:nth-child(1) { min-width: $column_one_width; }
+  td:nth-child(2), th:nth-child(2) { min-width: $column_two_width; }
+  td:nth-child(3), th:nth-child(3) { width: $column_three_width; }
+
+  thead {
+    background-color: $header_background_color;
+    color: $header_text_color;
+    tr {
+      display: block;
+      position: relative;
+    }
+  }
+  tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    max-height: $table_body_height;
+    min-height: 100px;
+    tr:nth-child(even) {
+      background-color: $alternate_row_background_color;
+    }
+  }
+}
+
+.old_ie_wrapper {
+  height: $table_body_height;
+  width: $table_width;
+  overflow-x: hidden;
+  overflow-y: auto;
+  tbody { height: auto; }
+}*/
+
+.section-div {
+    width: 95%;
+}
+
+@media \screen\0 {
+    .section-div {
+        width: 91%;
+    }
+}
+
+@media \screen\9 {
+    .section-div {
+        width: 91%;
+    }
+}
+
+.reportby {
+    margin-left: -27px;
+    margin-top: 5px;
+}
+
+@media \screen\0 {
+    .reportby {
+        margin-left: -21px;
+        margin-top: 5px;
+    }
+}
+
+@media \screen\9 {
+    .reportby {
+        margin-left: -21px;
+        margin-top: 5px;
+    }
+}
+
+.from-div {
+    padding-top: 21px;
+    font-size: medium;
+    margin-left: 43px;
+}
+@media \screen\0 {
+    .from-div {
+    padding-top: 21px;
+    font-size: medium;
+    margin-left: 61px;
+}
+}
+
+@media \screen\9 {
+   .from-div {
+    padding-top: 21px;
+    font-size: medium;
+    margin-left: 61px;
+}
+}
+
+.from {
+    padding-top: 7px;
+}
+
+@media \screen\0 {
+    .from {
+        padding-top: 7px;
+        margin-left: -14px;
+    }
+}
+
+@media \screen\9 {
+    .from {
+        padding-top: 7px;
+        margin-left: -14px;
+    }
+}
+
+.to-div {
+    padding-top: 21px;
+    font-size: medium;
+    margin-left: 62px;
+}
+
+.to {
+    padding-top: 7px;
+}
+
+@media \screen\0 {
+    .to {
+        padding-top: 7px;
+        padding-left: 2px;
+    }
+}
+
+@media \screen\9 {
+    .to {
+        padding-top: 7px;
+        padding-left: 2px;
+    }
+}
+
+.runreport {
+    padding-top: 19px;
+    font-size: medium;
+    margin-left: 62px;
+    -moz-margin-left:61px;
+}
+
+@media \screen\0 {
+    .runreport {
+        padding-top: 19px;
+        font-size: medium;
+        margin-left: 63px;
+    }
+}
+
+@media \screen\9 {
+    .runreport {
+        padding-top: 19px;
+        font-size: medium;
+        margin-left: 63px;
+    }
+}
+
+.cal-div {
+    margin-left: 13px;
+}
+
+@media \screen\0 {
+    .cal-div {
+        margin-left: 12px;
+    }
+}
+
+@media \screen\9 {
+    .cal-div {
+        margin-left: 12px;
+    }
+}
+.price{
+    text-align: right !important;
+}
+table {
+    border-spacing: 0;
+    width: 100%;
+    border: 0px;
+    margin-top: -5px;
+}
+
+td+td {
+    /*border-left:1px solid #eee;*/
+}
+
+td,
+th {
+    /*border-bottom:1px solid #eee;*/
+    /*background: #ddd;*/
+    /*color: #000;*/
+    padding: 10px 25px;
+}
+
+th {
+    height: 0;
+    line-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: transparent;
+    border: none;
+    white-space: nowrap;
+}
+
+th div {
+    position: absolute;
+    background: transparent;
+    color: black;
+    padding: 9px 25px;
+    top: 0;
+    margin-left: -25px;
+    line-height: normal;
+}
+
+th:first-child div {
+    border: none;
+}
+
+section {
+    position: relative;
+    /*border: 1px solid #000;*/
+    padding-top: 37px;
+    background: #cdcdcd;
+    width: 100%;
+}
+
+section.positioned {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 800px;
+    box-shadow: 0 0 15px #d1d1d1;
+}
+
+.container {
+    overflow-y: auto;
+    height: 60vh;
+    width: 100%;
+    background: white;
+}
+
+.sort:after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    content: "";
+    position: relative;
+    top: -10px;
+    right: -5px;
+}
+
+.sort.asc:after {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $sortIndicatorIconColor;
+    content: "";
+    position: relative;
+    top: 4px;
+    right: -5px;
+}
+
+.sort.desc:after {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid $sortIndicatorIconColor;
+    content: "";
+    position: relative;
+    top: -4px;
+    right: -5px;
+}
+
+.sort:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sort:focus {
+    outline: none;
+}
+
+tbody {
+    tr:nth-child(even) {
+        background-color: $alternate_row_background_color;
+    }
+    tr:nth-child(odd) {
+        background-color: #e4e4e4;
+    }
+}
+
+td:nth-child(1),
+th:nth-child(1) {
+    min-width: $column_one_width;
+}
+
+td:nth-child(2),
+th:nth-child(2) {
+    min-width: $column_two_width;
+}
+
+td:nth-child(3),
+th:nth-child(3) {
+    width: $column_three_width;
+}
+
+@media screen and (min-width: 300px) {
+    .center {
+        margin: auto;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    .center {
+        margin: auto;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .center {
+        margin: auto;
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .center {
+        margin: auto;
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .center {
+        margin: auto;
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .center {
+        margin: auto;
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .center {
+        margin: auto;
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .center {
+        margin: auto;
+        width: 50%;
+    }
+}

@@ -1,0 +1,79 @@
+    <div name="headerbar" class="head-bg row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10 m-2 pl-4 d-flex justify-content-sm-between">
+            <div>
+                <img src="assets/images/face.png" class="rounded-circle img-thumbnail profile-image">
+                <span class="m-2 name">{{loggedInUser.user}}</span>
+                <span class="m-2 location">Toronto, ON.</span>
+                {{user_id}}
+            </div>
+            <div>
+                <a [routerLink]=" ['/new-job']" *ngIf="isManagerType" draggable="false"
+                     routerLinkActive='md-active' [routerLinkActiveOptions]= "{exact: true}">
+                    <button type="button" class="btn btn-md btn-primary" >+ New Job</button>
+                </a>
+                  <a (click)="logout()" draggable="false"
+                     routerLinkActive='md-active' [routerLinkActiveOptions]= "{exact: true}">
+                    <button type="button" class="btn btn-md btn-primary" >Logout</button>
+                </a>
+
+                
+            </div>            
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+    <div name="navbar">
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="row w-100">
+                <div class="col-sm-1"></div>
+                <div class="collapse navbar-collapse col-sm-8" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a [routerLink]=" ['/dashboard']"  draggable="false"  
+                                routerLinkActive='md-active' [routerLinkActiveOptions]= "{exact: true}" class="nav-link">
+                                Dashboard<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Active Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Completed Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Reviews</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isManagerType">
+                            <a [routerLink]=" ['/company']"  draggable="false"  
+                                routerLinkActive='md-active' [routerLinkActiveOptions]= "{exact: true}" class="nav-link">
+                                Companies<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a [routerLink]=" ['/campaign']"  draggable="false"  
+                                routerLinkActive='md-active' [routerLinkActiveOptions]= "{exact: true}" class="nav-link">
+                                Campaign<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a [routerLink]=" ['/list']"  draggable="false"  
+                                routerLinkActive='md-active' [routerLinkActiveOptions]= "{exact: true}" class="nav-link">
+                                List<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2 pl-4 d-flex justify-content-start">
+                    <i class="m-2 ml-4 fa fa-bell fa-lg" aria-hidden="true"></i>
+                    <i  [routerLink]=" ['/message']"  draggable="false"  
+                                routerLinkActive='md-active' [routerLinkActiveOptions]= "{exact: true}" class="m-2 fa fa-commenting fa-lg" aria-hidden="true"></i>
+                    <i class="m-2 fa fa-cog fa-lg" aria-hidden="true"></i>
+                </div>
+            </div>            
+        </nav>
+    </div>

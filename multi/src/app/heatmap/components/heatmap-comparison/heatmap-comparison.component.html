@@ -1,0 +1,37 @@
+<div class="main">
+    <div class="wrapper">
+        <div class="close-div">
+            <button mdl-button mdl-button-type="icon" (click)="close()">
+        <mdl-icon>close</mdl-icon>
+        </button>
+        </div>
+        <div class="camera-name"> <b> {{heatmapService.comparisonSelectedCameraName}}</b></div>
+        <div class="camera-main" layout="row" layout-xs="column" layout-sm="column" flex="100" layout-align="center center">
+            <div class="cam1" flex="50">
+                <div class="range-div"> {{heatmapService.selectedDateRangeA}} </div>
+                    <image-loader [src]="heatmapCamera" [srcAttr]="'heatmapCam1Url'" (onImageClicked)="heatmapAClick($event)"></image-loader>
+                 
+
+            </div>
+            <div class="cam2" flex="50">
+                <div class="range-div"> {{heatmapService.selectedDateRangeB}} </div>
+                <image-loader [src]="heatmapCamera" [srcAttr]="'heatmapCam2Url'" (onImageClicked)="heatmapBClick($event)"></image-loader>
+            </div>
+            
+        </div>
+
+        <div>
+            <!--<ul>
+            <li *ngFor="let item of heatmapCameras" [ngClass]="{'boxStyle': (defaultLoadedCnt > 0)}">
+                <image-loader [src]="item"></image-loader>
+
+                <p style="text-align:center" *ngIf="defaultLoadedCnt > 0">
+                    <span>{{item.name}}</span><br>
+                    <span *ngIf="item.storeName">{{item.description}}</span>
+                </p>
+            </li>
+        </ul>-->
+        </div>
+
+    </div>
+</div>

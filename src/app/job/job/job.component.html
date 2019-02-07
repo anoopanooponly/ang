@@ -1,0 +1,164 @@
+<div name ="main" class="row m-4">
+    <div name="leftCol" class="col-sm-4">
+        <div class="m-2">
+            <a [routerLink]=" ['/dashboard']"  draggable="false"
+                    routerLinkActive='md-active' [routerLinkActiveOptions]= "{exact: true}">
+                <button class="btn btn-secondary my-2 my-sm-0" type="button">Cancel</button>
+            </a>
+        </div>
+        <div class="card m-2 mt-4 fadeBG">
+            <div class="card-block">
+                <div class="pb-4">
+                    <label for="company">Company</label>
+                    <select class="form-control" id="companyname" [(ngModel)]="job.company._id"
+                             (change)="oncompanySelect(job.company._id)"  placeholder="Select company">
+                         <option value="-1">Select Company</option>
+                        <option *ngFor="let company of companyList" [value]="company._id">
+                            {{company.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="pb-4">
+                    <label for="blding">Location</label>
+                    <select [disabled]="!job.company" class="form-control" id="category" [(ngModel)]="job.location" placeholder="Select location">
+                        <option value="-1">Select Location</option>
+                        <option *ngFor="let loc of job.company.locations" [value]="loc._id">
+                            {{loc.name}}
+                        </option> 
+                    </select>
+                </div>
+                <div class="pb-4">
+                    <label for="address">Category</label>
+                    <select class="form-control" [(ngModel)]="job.catid" id="category"
+                             (change)="onchange(job.catid)" placeholder="Select category">
+                        <option value="-1">Select category</option>
+                        <option *ngFor="let cat of categoryList" [value]="cat._id">
+                            {{cat.name}}
+                        </option>                                    
+                    </select>
+                </div>
+                <!--<div>
+                    <div>
+                        <rl-tag-input
+                            [addOnBlur]="false"
+                            [autocomplete]="true"
+                            [autocompleteItems]="autocompleteItems"
+                            [(ngModel)]="autocompleteTags"
+                            (itemSelected)= "itemSelected(itemToEmit)"
+                            (enterPressed)="itemSelected(itemToEmit)"
+                            placeholder="add skills">
+                        </rl-tag-input>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div name="rightCol" class="col-sm-8">  
+        <div name="progressbar" class="row m-2">
+            <div class="col-sm-10">
+                <div class="progress">
+                    <div class="progress-bar " role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;background-color: #29abe2;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">Job Details</div>
+                    <div class="col-sm-4">Select Workers</div>
+                    <div class="col-sm-4">Job Summary</div>
+                </div>
+            </div>
+            <div class="col-sm-2 d-flex justify-content-end">
+                <a [routerLink]=" ['/new-job/worker']" (click)="save()" draggable="false"
+                    routerLinkActive='md-active' [routerLinkActiveOptions]= "{exact: true}"
+                    class="btn " style="background-color:#96cb17;color:white !important" type="button">
+                    Select Workers
+                </a>
+            </div>
+        </div>
+        <div name="details" class="card mt-4 m-2">
+            <div class="row m-2 ml-4 pl-3">
+                <span class="fa-stack fa-lg align-self-center">
+                    <i class="fa fa-circle fa-stack-2x ico-green"></i>
+                    <i class="fa fa-info fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="ml-3 card-title">
+                    <h5 class="mt-2 pt-1">Job Details</h5>
+                    <h6 class="text-muted">If the job is multiple shifts please select the reapeating tab.</h6>
+                </span>
+            </div>
+            <div class="card-block">
+                <div class="row pb-3 m-2">
+                    <div class="col-sm-5">
+                        <span>
+                            <label for="pref">Job Name</label>
+                            <input id="pref" type="text" class="form-control" [(ngModel)]="job.name"
+                                    placeholder="For your reference" aria-describedby="basic-addon1">
+                        </span>
+                    </div>
+                     <div class="col-sm-4">
+                        <span>
+                            <label for="wage">Select Shift</label>
+                            <select class="form-control" id="shifts" placeholder="Select shifts"  [(ngModel)]="job.selectedShift._id" (change)="onshiftSelect(job.selectedShift._id)">
+                                 <option value="-1">Select Shifts</option>
+                                <option *ngFor="let shift of job.company.shifts" [value]="shift._id">
+                                    {{shift.name}}
+                                </option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="col-sm-3">
+                        <span>
+                            <label for="wage">Wage</label>
+                            <input id="wage" type="number" class="form-control" [(ngModel)]="job.wage" placeholder="Hourly (CAD)" aria-describedby="basic-addon1">
+                            
+                        </span>
+                    </div>
+                   
+                </div>
+                <div class="row pb-3 m-2">
+                    <div class="col-sm-5">
+                        <label for="startDate">Shift Begins</label>
+                        <div class="btn-group w-100" dropdown [autoClose]="false" [(isOpen)]="uiState.startDateOpen">
+                            <button dropdownToggle type="button" id="startDate"
+                                class="btn btn-secondary dropdown-toggle form-control d-flex align-items-center justify-content-between">
+                                {{job.startDate | amDateFormat:'dddd, MMMM Do YYYY'}}
+                            </button>
+                            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                <li role="menuitem">
+                                    <datepicker [(ngModel)]="job.startDate" [minDate]="minDate" 
+                                        [showWeeks]="true" [dateDisabled]="dateDisabled"
+                                        (selectionDone)="toggleUIState('startDateOpen', $event)"></datepicker>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 align-self-end center d-flex justify-content-center">
+                        to
+                    </div>
+                    <div class="col-sm-5">
+                        <label for="endDate">Shift Ends</label>
+                        <div class="btn-group w-100" dropdown [autoClose]="false" [(isOpen)]="uiState.endDateOpen">
+                            <button dropdownToggle type="button" id="endDate"
+                                class="btn btn-secondary dropdown-toggle form-control d-flex align-items-center justify-content-between">
+                                {{job.endDate | amDateFormat:'dddd, MMMM Do YYYY'}}
+                            </button>
+                            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                <li role="menuitem">
+                                    <datepicker [(ngModel)]="job.endDate" [minDate]="minDate" 
+                                        [showWeeks]="true" [dateDisabled]="dateDisabled"
+                                        (selectionDone)="toggleUIState('endDateOpen', $event)"></datepicker>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pb-3 m-2">
+                    <span class=" w-100 ml-2 mr-2 pl-1 pr-1">
+                        <label for="wage">Job Description</label>
+                        <textarea class="form-control" id="jdesc" rows="3"  [(ngModel)]="job.desc"
+                                placeholder="Job description" aria-describedby="basic-addon1"></textarea>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

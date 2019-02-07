@@ -1,0 +1,189 @@
+<button #editUserButton mdl-button mdl-tooltip="create clip" mdl-ripple (click)="editUserDialog.show()">
+        <img style="margin-top: -9px;"width="33" height="25" src="assets/img/ic_cloud.png" />   </button>
+
+
+<mdl-dialog #editUserDialog [mdl-dialog-config]="{
+              clickOutsideToClose: false,
+              styles:{'width': '650px'},
+              isModal:true,
+              openFrom: editUserButton,
+              enterTransitionDuration: 400,
+              leaveTransitionDuration: 400}" (show)="onDialogShow(dialogRef)" (hide)="onDialogHide()">
+  <h3 class="mdl-dialog__title">Create Clip</h3>
+
+  <form #clipForm="ngForm" novalidate>
+    <div class="mdl-dialog__content" style="font-size: 16px;max-height:66vh;overflow:auto">
+      <div style="text-align:center;">
+          <mdl-spinner *ngIf="!videoLoaded" class="progress contentZIndex" [active]="true"></mdl-spinner>
+        </div>
+      <div style="width:280px;margin-left:25%" [hidden]="!videoLoaded">
+        <div id="player-wrapper-clip" ondblclick="this.disabled=true;" style="box-shadow: 0 11px 14px -3px rgba(0, 0, 0, 0.3);background: black;"></div>
+        <div class="media-control-new" data-media-control style="background:black">
+          <div style="text-align:center;color:white;">
+
+
+            <button *ngIf="!isPlaying" (click)="play()" mdl-button mdl-button-type="icon">
+                 <mdl-icon >play_arrow</mdl-icon>
+                </button>
+            <button *ngIf="isPlaying" (click)="stop()" mdl-button mdl-button-type="icon">
+                 <mdl-icon >pause</mdl-icon>
+              </button>
+                  <button (click)="refresh()" mdl-button mdl-button-type="icon">
+                 <mdl-icon >refresh</mdl-icon>
+              </button>
+                  
+          </div>
+        </div> 
+      </div>
+      <div style=" margin-top: 20px;" flex layout="column" class="margin50">
+        <div layout="row">
+          <div flex="10" style="padding-top:24px; margin-right: 26px;">
+            <label *ngIf="mode == 0">Store:</label>
+            <label *ngIf="mode == 1">View:</label>
+          </div>
+
+          <mdl-select (change)="onStoreChange(selectedStore)" name="store" [(ngModel)]="selectedStore" *ngIf="mode == 0">
+            <mdl-option *ngFor="let store of stores" [value]="store.id">{{store.shortName}}</mdl-option>
+          </mdl-select>
+
+          <mdl-select (change)="onViewChange(selectedView)" name="view" [(ngModel)]="selectedView" *ngIf="mode == 1">
+            <mdl-option *ngFor="let view of views" [value]="view.id">{{view.shortName}}</mdl-option>
+
+          </mdl-select>
+        </div>
+        <div style="text-align:center">
+          <mdl-spinner *ngIf="!cameraLoaded" class="progress contentZIndex" [active]="true"></mdl-spinner>
+        </div>
+        <div style="padding-top:10px;font-size: 16px;" flex layout="row">
+
+          <div flex="10" style="padding-top:23px;margin-right: 30px;">
+            <label >Camera:</label>
+          </div>
+          <!--*ngIf="cameraLoaded"-->
+          <div>
+            <mdl-select   name="camera" [(ngModel)]="selectedCamera" (change)="onCameraChange(selectedCamera)" placeholder="Select Camera">
+            <mdl-option *ngFor="let camera of cameraList" [value]="camera.id">{{camera.name}}</mdl-option>
+            </mdl-select>
+          </div>
+
+        </div>
+      </div>
+      <hr>
+      <div *ngIf="dateValidationErr" style="color:red;">
+          {{dateValidationMsg}}
+      </div>
+      <!--date/time    -->
+      <div flex layout="column" class="margin30" style="min-height:75px">
+        <div layout="row" flex="100" class="margin40">
+          <div flex="15" style="padding-top: 3px;">
+            <label>From date:</label>
+          </div>
+          <div layout="row" flex="25">
+
+                <my-date-range-picker  [selDateRange]="selectedFromDate"  [options]="myDateRangePickerOptionsNormal" [isRange]="false" [isDateDisplay]="true" (dateRangeChanged)="onDateFromchanged($event)" ></my-date-range-picker>
+           
+             
+            </div>
+          <div flex="20" style="text-align:right;margin-right:3px;padding-top: 3px;">
+            <label>From Time:</label>
+          </div>
+
+          <div flex="35">
+            <div flex layout="row" >
+              <input type="number" #hour="ngModel" pattern="(1[012]|[1-9])" (keydown)= "onkeydown($event)" style="width:35px" id="hour" min="0" max="12" name="hour"  [(ngModel)]="fhour"/>:
+              <input type="number" #min="ngModel" pattern="[0-5]?[0-9]" (keydown)= "onkeydown($event)" style="width:35px" id="min" min="0" max="59"  name="min" [(ngModel)]="fmin"/>:
+              <input type="number"  #sec="ngModel" pattern="[0-5]?[0-9]"  (keydown)= "onkeydown($event)" style="width:35px" id="sec" min="00" max="59"  name="sec" [(ngModel)]="fsec"/>
+              <mdl-select name="fampm" [(ngModel)]="fromampm" style="margin-top: -22px; margin-bottom: -21px;padding-left: 8px;width: 38%;">
+                <mdl-option value="AM">AM</mdl-option>
+                <mdl-option value="PM">PM</mdl-option>
+              </mdl-select>
+            </div>
+           <div class="error" *ngIf="(hour.errors && hour.errors.pattern || min.errors && min.errors.pattern || sec.errors && sec.errors.pattern)">
+               Not a valid time.
+           </div>
+
+          </div>
+        </div>
+
+        <div layout="row" flex="100">
+          <div flex="15" style="padding-top: 3px;">
+            <label>To date:</label>
+          </div>
+          <div layout="row" flex="25">
+              <my-date-range-picker  [selDateRange]="selectedToDate" [isRange]="false" [options]="myDateRangePickerOptionsNormal"  [isDateDisplay]="true" (dateRangeChanged)="onDateTochanged($event)" ></my-date-range-picker>
+            
+          </div>
+          <div flex="20" style="text-align:right;margin-right:3px;padding-top: 3px;">
+            <label>To Time:</label>
+          </div>
+          <div flex="35">
+            <div flex layout="row" >
+              <input type="number" style="width:35px" #tohour="ngModel" (keydown)= "onkeydown($event)" pattern="(1[012]|[1-9])" id="hour" min="0" max="12" name="tohour"  [(ngModel)]="thour"/>:
+              <input type="number" style="width:35px" #tomin="ngModel" (keydown)= "onkeydown($event)" pattern="[0-5]?[0-9]" id="min" min="0" max="59"  name="tomin"  [(ngModel)]="tmin"/>:
+              <input type="number" style="width:35px" #tosec="ngModel" (keydown)= "onkeydown($event)" pattern="[0-5]?[0-9]" id="sec" min="0" max="59"  name="tosec"  [(ngModel)]="tsec"/>
+              <mdl-select name="tampm" [(ngModel)]="toampm" style="margin-top: -22px; margin-bottom: -21px;padding-left: 8px;width:38%;">
+                <mdl-option value="AM">AM</mdl-option>
+                <mdl-option value="PM">PM</mdl-option>
+              </mdl-select>
+            </div>
+             <div class="error" *ngIf="(tohour.errors && tohour.errors.pattern || tomin.errors && tomin.errors.pattern || 
+             tosec.errors && tosec.errors.pattern)">
+               Not a valid time.
+           </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="showDuration">
+        <b>Duration: {{formattedDuration}}</b>
+        <br>
+        Given the available bandwidth at this location, it will take ~ 3.5 hours to create your clip. Do you want to continue ?
+      </div>
+      <br>
+      <div *ngIf="showDuration" style="text-align:right">
+          <button mdl-button (click)="editTime()" mdl-ripple style="color:red">No, Edit Timeframe </button>
+          &nbsp; &nbsp;
+          <button mdl-button (click)="continueClipGeneration()" style="color:green">Yes, Create Clip</button>
+      </div>
+      <hr>
+      <!--name-->
+      <div flex layout="column" style="min-height:70px">
+        <div layout="row">
+          <label style="padding-top: 23px;" flex="15">Clip name:</label>
+          <mdl-textfield maxLength="50" class="form-control" disableNativeValidityChecking type="text" #clipname="ngModel" name="clipname" id="clipname"
+            required [(ngModel)]="name"></mdl-textfield>
+        </div>
+      </div>
+      <div *ngIf="clipname.errors && submitted" class="alert alert-danger">
+        <div class="error" style="margin-top:-5px" [hidden]="!clipname.errors.required">
+          Please enter a name for clip.
+        </div>
+       
+      </div>
+       <div class="error" style="margin-top:-5px" *ngIf="nameMaxLength">
+            Clip name exceeds max length of 50
+        </div>
+        <div layout="row">
+          <label style="padding-top: 23px;" flex="15">Notes:</label>
+          <mdl-textfield maxLength="250" rows="3" maxrows="3" type="text" [(ngModel)]="notes" name="notes"></mdl-textfield>
+        </div>
+        <div class="error" style="margin-top:-5px" *ngIf="notesMaxLength">
+            Notes exceeds max length of 250
+        </div> 
+        <div layout="row">
+          <label>Visibility:</label>
+          <div>
+            <mdl-radio name="group2" value="0"  (change)="onVisibleShare(visibleOption)" [(ngModel)]="visibleOption" mdl-ripple>Shared with Organization</mdl-radio>
+            <mdl-radio name="group" value="1" (change)="onVisibleOnlyMe(visibleOption)"  [(ngModel)]="visibleOption" mdl-ripple>Visible Only to Me</mdl-radio>
+          </div>
+        </div>
+
+      
+      <hr>
+    </div>
+  </form>
+  <div class="mdl-dialog__actions" *ngIf="!showDuration" layout="row" layout-align="space-between center">
+  
+    <button mdl-button (click)="close()" mdl-ripple>Cancel</button>
+    <button mdl-button (click)="createClip()" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Create Clip</button>
+  </div>
+</mdl-dialog>

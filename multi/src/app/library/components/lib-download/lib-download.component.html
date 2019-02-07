@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <div class="buttons">
+        <div class="cancel-div">
+            <button class="cancel" mdl-button mdl-button-type="raised" mdl-ripple (click)="onCancelClick()">
+                    Cancel
+        </button>
+        </div>
+        <div class="download-div">
+            <button class="download" mdl-button mdl-button-type="raised" mdl-ripple (click)="onDownloadClick()">
+                   <div class="count"> <div class="countlabel">{{libraryService.selectedItemCountStr}}</div> </div> 
+                   <div class="label">Download Clips</div>
+        </button>
+        </div>
+    </div>
+</div>

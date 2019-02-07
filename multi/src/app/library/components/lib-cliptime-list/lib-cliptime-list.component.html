@@ -1,0 +1,20 @@
+<!--<div style="text-align:center;z-index:1000;">
+    <mdl-spinner *ngIf="libraryService.loadingSpinnerOn" class="progress contentZIndex" [active]="true"></mdl-spinner>
+</div>-->
+<div *ngIf="libraryService.LibraryGroupBy == 'TimeOfClip'" class="content">
+    <div *ngFor="let item of libraryService.libDataMapForClipDate">
+        <div>
+            <lib-cliptime [clipData]="item"></lib-cliptime>
+        </div>
+    </div>
+</div>
+<div *ngIf="libraryService.LibraryGroupBy == 'TimeCreated'" class="content">
+    <div *ngFor="let item of libraryService.libDataMapForCreatedDate">
+        <div>
+            <lib-cliptime [clipData]="item"></lib-cliptime>
+        </div>
+    </div>
+</div>
+<div class="spinner" *ngIf="libraryService.loadingSpinnerOn">
+    <mdl-spinner class="progress contentZIndex" [active]="true"></mdl-spinner>
+</div>

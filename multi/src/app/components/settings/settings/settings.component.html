@@ -1,0 +1,29 @@
+<div class="main">
+    <div class="div-link" layout="row" layout-align="space-between center">
+        <button mdl-button (click)="onCancelClick()" font-size=10px style="border-bottom: 0px !important ;" mdl-ripple>Cancel</button>
+        <button mdl-button mdl-ripple style="border-bottom: 0px !important;" (click)="onDoneClick()">Done</button>
+    </div>
+    <mdl-list style="max-height:35vh;overflow:auto; padding: 0px;">
+        <mdl-list-item class="list" [hidden]="isAdmin()" (click)="adminSettings()">
+            Administration
+        </mdl-list-item>
+        <mdl-list-item class="list">
+            <mdl-list-item-primary-content>
+
+                Enable Local Playback
+            </mdl-list-item-primary-content>
+            <mdl-list-item-secondary-action>
+                <mdl-checkbox [(ngModel)]="playBack" mdl-ripple></mdl-checkbox>
+            </mdl-list-item-secondary-action>
+        </mdl-list-item>
+        <mdl-list-item class="list">
+            <mdl-list-item-primary-content>
+
+                Version
+            </mdl-list-item-primary-content>
+            <mdl-list-item-secondary-action>
+                2.1.5
+            </mdl-list-item-secondary-action>
+        </mdl-list-item>
+    </mdl-list>
+</div>

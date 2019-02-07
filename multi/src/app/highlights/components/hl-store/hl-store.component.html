@@ -1,0 +1,16 @@
+<div class="wrapper" *ngIf="!store.noCameraFound">
+    <div class="title">
+        {{store.name}}
+    </div>
+    <div *ngIf="(store.cameraList == null || store.cameraList.length <= 0)">
+        <p style="text-align:center;color:#b2b3b3;">No camera details to be displayed.</p>
+    </div>
+    <div *ngIf="store.cameraList !=null && store.cameraList.length > 0">
+        <div *ngFor="let item of store.cameraList" class="box">
+            <lib-image [src]="item" (onImageClicked)="onImageSelected($event)"></lib-image>
+        </div>
+        <div *ngIf="store != null && store.pageCount > 1" class="button-div">
+            <button (click)="onSeeMoreClick()">See more from {{store.name}}</button>
+        </div>
+    </div>
+</div>

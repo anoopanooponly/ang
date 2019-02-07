@@ -1,0 +1,36 @@
+<div class="calendar-main" [ngClass]="{single: !heatmapService.comparisonWindowOpen, double: heatmapService.comparisonWindowOpen}">
+    <div class="arrow-up"></div>
+    <div class="div-link" flex layout="row" layout-align="space-between center">
+        <div class="cancel">
+            <button mdl-button (click)="onCancelClick()" style="border-bottom: 0px !important;" mdl-ripple>Cancel</button>
+        </div>
+        <div class="date">Date</div>
+        <div class="done">
+            <button mdl-button (click)="onDoneClick()" style="border-bottom: 0px !important;" mdl-ripple>Done</button>
+        </div>
+    </div>
+    <div *ngIf="!heatmapService.comparisonWindowOpen" class="div-label"> {{heatmapService.selectedDateRangeInCalendar}}</div>
+    <hr>
+    <!--<div class="div-radio" [hidden]="!heatmapService.comparisonWindowOpen">
+        <mdl-radio class="radio1" name="group1" value="0" [(ngModel)]="mode" ng-checked="True" mdl-ripple (change)="onHeatmapAChange()">Heatmap A</mdl-radio>
+        <mdl-radio class="radio2" name="group1" value="1" [(ngModel)]="mode" mdl-ripple (change)="onHeatmapBChange()">Heatmap B</mdl-radio>
+    </div>-->
+
+    <div class="calendar-div" *ngIf="!heatmapService.comparisonWindowOpen && !heatmapService.singleCameraView">
+        <my-date-range-picker [options]="myDateRangePickerOptionsNormal" [isRange]="true" [selDateRange]="heatmapService.selectedDateRangeNormal" (dateRangeChanged)="onDatechanged($event)"></my-date-range-picker>
+    </div>
+    <div class="calendar-div" *ngIf="heatmapService.comparisonWindowOpen && !heatmapService.singleCameraView">
+        <mdl-tabs mdl-ripple mdl-tab-active-index="0 " (mdl-tab-active-changed)="tabChanged($event) ">
+            <mdl-tab-panel mdl-tab-panel-title="Heatmap A">
+                <my-date-range-picker [options]="myDateRangePickerOptionsNormal" name="mydaterangea" [isRange]="true" [selDateRange]="heatmapService.selectedDateRangeNormalA" (dateRangeChanged)="onDatechangedA($event)"></my-date-range-picker>
+            </mdl-tab-panel>
+            <mdl-tab-panel mdl-tab-panel-title="Heatmap B ">
+                <my-date-range-picker [options]="myDateRangePickerOptionsNormal" name="mydaterangeb" [isRange]="true" [selDateRange]="heatmapService.selectedDateRangeNormalB" (dateRangeChanged)="onDatechangedB($event)"></my-date-range-picker>
+            </mdl-tab-panel>
+        </mdl-tabs>
+    </div>
+    <div class="calendar-div" *ngIf="heatmapService.singleCameraView">
+        <my-date-range-picker [options]="myDateRangePickerOptionsNormal" [isRange]="true" [selDateRange]="heatmapService.singleCamRangeForCalendar" (dateRangeChanged)="onDatechanged($event)"></my-date-range-picker>
+    </div>
+
+</div>

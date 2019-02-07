@@ -1,0 +1,19 @@
+<!--<div class="spinner" *ngIf="libraryService.loadingSpinnerOn">
+    <mdl-spinner *ngIf="libraryService.loadingSpinnerOn" class="progress contentZIndex" [active]="true"></mdl-spinner>
+</div>-->
+<div class="wrapper">
+    <div class="title">
+        {{title}}
+    </div>
+    <div *ngIf="dataLoaded && (cameras == null || cameras.length <= 0)">
+        <p style="text-align:center;color:#b2b3b3;">No camera details to be displayed.</p>
+    </div>
+    <div *ngIf="cameras !=null && cameras.length > 0">
+        <div *ngFor="let item of cameras" class="box">
+            <lib-image [src]="item" (onImageClicked)="onImageSelected($event)"></lib-image>
+        </div>
+    </div>
+    <div style="text-align:center;z-index:1000;">
+        <mdl-spinner *ngIf="!dataLoaded || libraryService.loadingSpinnerOn" class="progress contentZIndex" [active]="true"></mdl-spinner>
+    </div>
+</div>

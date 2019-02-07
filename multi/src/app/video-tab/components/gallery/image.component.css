@@ -1,0 +1,111 @@
+.offline-img {
+    position: absolute;
+    top: 94px;
+    left: 194px;
+    z-index: 101;
+    width: 68.8px;
+    height: 63px;
+}
+
+a {
+    font-size: 16px;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    margin-right: 8px;
+}
+
+li:nth-of-type(2n) {
+    margin-right: 0;
+}
+
+.progress {
+    margin-top: 22%;
+}
+
+@media screen and (min-width: 300px) {
+    .progress {
+        margin-top: 22%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    .progress {
+        margin-top: 22%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .progress {
+        margin-top: 22%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .progress {
+        margin-top: 22%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .progress {
+        margin-top: 22%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .progress {
+        margin-top: 22%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .progress {
+        margin-top: 22%;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .progress {
+        margin-top: 22%;
+    }
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+img {
+    transition: transform .2s ease-in-out;
+}
+
+figure {
+    margin: 0;
+}
+
+.imgContainer {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 55%;
+    text-align: center;
+    cursor: pointer;
+}
+
+img.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contentZIndex {
+    z-index: 100;
+}

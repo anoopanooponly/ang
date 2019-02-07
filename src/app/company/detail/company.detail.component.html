@@ -1,0 +1,315 @@
+<form #companyForm="ngForm" (ngSubmit)="saveCompany()">
+<div name ="main" class="row m-4">    
+    <div class="col-sm-10 mt-2">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">Company </li>
+            <li class="breadcrumb-item" *ngIf="company._id">{{company.name}}</li>
+            <!--<a href="#/company/detail/{{company._id}}"></a>-->
+        </ol>
+    </div>
+    <div class="col-sm-2 mt-3">
+        <button type="submit" class="btn btn-success"            
+                [disabled]="!companyForm.valid">Save Details</button>
+    </div>
+    <div name="leftCol" class="col-sm-4 mt-2">
+        <div class="card fadeBG">
+            <div class="card-block">
+                <div class="form-group pb-2">
+                    <label for="companyName">Company Name</label>
+                    <input id="companyName" type="text" name="companyName"
+                            placeholder="e.g Scotia Bank Plaza" aria-describedby="companyName"
+                            [(ngModel)]="company.name" class="form-control" #companyName="ngModel"
+                            required>
+                    <div *ngIf="companyName.errors && companyName.dirty" class="danger">
+                        <div [hidden]="!companyName.errors.required">
+                            Required!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-4" *ngFor="let loc of company.locations | enabled; let locIndex = index">
+            <div class="card-header d-flex justify-content-between">
+                <h4>{{loc.name}}</h4>
+                <a (click)="removeLocation(locIndex)" draggable="false"
+                            class="btn btn-secondary text-muted">
+                    <i class="fa fa-trash-o align-middle" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="card-block">                
+                <div class="card-text">
+                    <address>
+                        {{loc.address}}<br> 
+                        {{loc.city}}, {{loc.state}}<br>
+                        {{loc.postalCode}}
+                    </address>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-header d-flex justify-content-between">
+                <label>Multiple Locations</label>
+                <a (click)="showNewLocationModal()" draggable="false"
+                            class="btn btn-secondary text-muted">
+                    <i class="fa fa-plus-square-o align-middle" aria-hidden="true"></i>
+                    <span class="ml-2 align-middle">Add Location</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div name="rightCol" class="col-sm-8 mt-2">
+        <ul class="list-group mb-4">
+            <li class="list-group-item justify-content-between" 
+                    *ngFor="let sh of company.shifts | enabled; let shiftIndex = index">
+                <span>
+                    {{sh.name}}
+                    <span class="text-muted ml-2">
+                        {{getTimeIn12HrFormat(sh.start)}} - {{getTimeIn12HrFormat(sh.end)}}
+                    </span>
+                </span>                    
+                <span class="text-muted">
+                    {{getShiftRepeatDesc(sh)}}
+                    <span class="ml-2">
+                        <button type="button" class="btn btn-secondary" (click)="removeShift(shiftIndex)">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                    </span>
+                </span>
+            </li>
+        </ul>
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-middle">
+                <span class="mt-2">Click here to add shifts to your company.</span>
+                <a (click)="showShiftModal()" draggable="false"
+                            class="btn btn-secondary text-muted">
+                    <i class="fa fa-plus-square-o align-middle" aria-hidden="true"></i>
+                    <span class="ml-2 align-middle">Add Shift</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<div bsModal #locationModal="bs-modal" class="modal" [config]="{backdrop: 'static'}" 
+        tabindex="-1" role="dialog" aria-labelledby="Location Modal" aria-hidden="true">
+    <form #locationForm="ngForm" (ngSubmit)="addLocation()">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content fadeBG">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Add Location</h4>
+                <button type="button" class="close pull-right" aria-label="Close"
+                        (click)="hideLocationModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body m-3">
+                <div class="pb-2">
+                    <label id="locNameLabel" for="locName">Location Name</label>
+                    <input id="locName" type="text" [(ngModel)]="location.name" 
+                            name="locName" placeholder="For your reference" 
+                            aria-describedby="locNameLabel"
+                            class="form-control" #locName="ngModel" required>
+                    <div *ngIf="locName.errors && locName.dirty" class="danger">
+                        <div [hidden]="!locName.errors.required">
+                            Required!
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-2">
+                    <label for="address">Location</label>
+                    <div class="form-group">
+                        <input placeholder="search for location" autocorrect="off" 
+                                autocapitalize="off" spellcheck="off" type="text"
+                                class="form-control" #search [formControl]="searchControl" 
+                                name="locTxt" [(ngModel)]="locTxt">
+                    </div>
+                </div>
+                <div class="pb-2">
+                    <label id="addressLabel" for="address">Address</label>
+                    <input id="address" type="text" [(ngModel)]="location.address" 
+                            name="address" placeholder="e.g 85 Queens Wharf Rd." 
+                            aria-describedby="addressLabel"
+                            class="form-control" #address="ngModel" required>
+                    <div *ngIf="address.errors && address.dirty" class="danger">
+                        <div [hidden]="!address.errors.required">
+                            Required!
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-2">
+                    <label id="cityLabel" for="city">City</label>
+                    <input id="city" type="text" [(ngModel)]="location.city" 
+                            name="city" placeholder="Toronto" aria-describedby="cityLabel"
+                            class="form-control" #city="ngModel" required>
+                    <div *ngIf="city.errors && city.dirty" class="danger">
+                        <div [hidden]="!city.errors.required">
+                            Required!
+                        </div>
+                    </div>  
+                </div>
+                <div class="row pb-2">
+                    <div class="col-sm-6">
+                        <span>
+                            <label id="postalCodeLabel" for="city">Postal Code</label>
+                            <input id="postalCode" type="text" [(ngModel)]="location.postalCode" 
+                                    name="postalCode" placeholder="e.g M5F 2W1" 
+                                    aria-describedby="postalCodeLabel"
+                                    class="form-control" #postalCode="ngModel" required>
+                            <div *ngIf="postalCode.errors && postalCode.dirty" class="danger">
+                                <div [hidden]="!postalCode.errors.required">
+                                    Required!
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span>
+                            <label d="provinceLabel" for="province">Province</label>
+                            <input id="province" type="text" [(ngModel)]="location.province" 
+                                    name="province" placeholder="Ontario" aria-describedby="provinceLabel"
+                                    class="form-control" #province="ngModel" required>
+                            <div *ngIf="province.errors && province.dirty" class="danger">
+                                <div [hidden]="!province.errors.required">
+                                    Required!
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <button type="submit" class="btn btn-primary btn-block"
+                            [disabled]="!locationForm.valid">
+                        Add Location
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+<div bsModal #shiftModal="bs-modal" class="modal" [config]="{backdrop: 'static'}" 
+        tabindex="-1" role="dialog" aria-labelledby="Shift Modal" aria-hidden="true">
+    <form [formGroup]="shiftForm" (ngSubmit)="addShift()" novalidate>
+    <div class="modal-dialog modal-md">
+        <div class="modal-content fadeBG">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Add Shift</h4>
+                <button type="button" class="close pull-right" aria-label="Close" 
+                        (click)="hideShiftModal()">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body m-3">
+                <div class="pb-2">
+                    <label id="shiftNameLabel" for="shiftName">Shift Name</label>
+                    <input type="text" formControlName="name" class="form-control" 
+                            placeholder="Morning Shift">
+                    <div *ngIf="shiftForm.controls.name.dirty && shiftForm.hasError('required', ['name'])" class="danger">
+                        Required!
+                    </div>
+                </div>
+                <div class="pb-4">
+                    <label for="company">Repeat</label>
+                    <select class="form-control" id="repeat" [(ngModel)]="repeatInd"
+                            [ngModelOptions]="{standalone: true}" 
+                            name="repeat" (change)="changeRepeat()">
+                        <option value="0">Every Week</option>
+                        <option value="1">Every Day</option>                                
+                    </select>
+                </div>
+                <div class="pb-4">
+                    <label for="company">Repeats On</label>
+                    <div class="d-flex justify-content-between form-group" [formGroup]="shiftDays">
+                        <div>
+                            <span class="align-middle">
+                                <input type="checkbox" formControlName="Sunday">
+                            </span>
+                            <label class="pr-1">S</label>
+                        </div>
+                        <div>
+                            <span class="align-middle">
+                                <input type="checkbox" formControlName="Monday">
+                            </span>
+                            <label class="pr-1">M</label>
+                        </div>
+                        <div>
+                            <span class="align-middle">
+                                <input type="checkbox" formControlName="Tuesday">
+                            </span>
+                            <label class="pr-1">T</label>
+                        </div>
+                        <div>
+                            <span class="align-middle">
+                                <input type="checkbox" formControlName="Wednesday">
+                            </span>
+                            <label class="pr-1">W</label>
+                        </div>
+                        <div>
+                            <span class="align-middle">
+                                <input type="checkbox" formControlName="Thursday">
+                            </span>
+                            <label class="pr-1">T</label>
+                        </div>
+                        <div>
+                            <span class="align-middle">
+                                <input type="checkbox" formControlName="Friday">
+                            </span>
+                            <label class="pr-1">F</label>
+                        </div>
+                        <div>
+                            <span class="align-middle">
+                                <input type="checkbox" formControlName="Saturday">
+                            </span>
+                            <label class="pr-1">S</label>
+                        </div>
+                    </div>
+                    <div *ngIf="shiftForm.controls.days.dirty && shiftForm.hasError('multipleCheckboxRequireOne', ['days'])" class="danger">
+                        Required atleast one!
+                    </div>
+                </div>
+                <div class="pb-2 d-flex justify-content-between">
+                    <span class="d-flex flex-column">
+                        <label>Start Time</label>
+                        <div class="btn-group" dropdown [autoClose]="false">
+                            <button dropdownToggle type="button" 
+                                class="btn btn-secondary dropdown-toggle ">
+                                    &nbsp;{{startTime | amDateFormat:'h:mm a'}}&nbsp;
+                                    <span class="caret"></span>
+                            </button>
+                            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                <li role="menuitem">
+                                    <timepicker name="startTime" [(ngModel)]="startTime"
+                                            [ngModelOptions]="{standalone: true}"></timepicker>
+                                </li>
+                            </ul>
+                        </div>                            
+                    </span>
+                    <span class="d-flex flex-column">
+                        <label>End Time</label>
+                        <div class="btn-group" dropdown [autoClose]="false">
+                            <button dropdownToggle type="button" 
+                                class="btn btn-secondary dropdown-toggle">
+                                &nbsp;{{endTime | amDateFormat:'h:mm a'}}&nbsp;
+                                <span class="caret"></span>
+                            </button>
+                            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                <li role="menuitem">
+                                    <timepicker name="endTime" [(ngModel)]="endTime"
+                                            [ngModelOptions]="{standalone: true}"></timepicker>
+                                </li>
+                            </ul>
+                        </div>
+                    </span>
+                </div>
+                <div class="p-4">
+                    <button type="submit" class="btn btn-primary btn-block"
+                            [disabled]="!shiftForm.valid">
+                        Add Shift
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+

@@ -1,0 +1,25 @@
+<div>
+    <hl-action *ngIf="!highlightsService.downloadBarActive">Loading Lib Action..</hl-action>
+    <hl-download *ngIf="highlightsService.downloadBarActive">Loading Lib Download..</hl-download>
+</div>
+<div class="outer-div">
+    <!--<div id="player-div">
+        <router-outlet></router-outlet>
+    </div>-->
+    <div *ngIf="highlightsService.PageName == 'Ungrouped'">
+        <hl-ungrouped></hl-ungrouped>
+    </div>
+    <div *ngIf="highlightsService.PageName == 'StoreName'">
+        <hl-store-list></hl-store-list>
+    </div>
+    <div *ngIf="highlightsService.PageName == 'SeeMore'">
+        <hl-see-more></hl-see-more>
+    </div>
+    <div *ngIf="highlightsService.PageName == 'TimeOfClip'">
+        <hl-cliptime-list></hl-cliptime-list>
+    </div>
+    <div *ngIf="highlightsService.PageName == 'ReelName'">
+        <hl-reel-list></hl-reel-list>
+    </div>
+
+</div>

@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+* {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+.head-bg {	
+  height: 54px;	
+  background-color: #29ABE2;
+}
+.profile-image {	
+  border: 2px solid rgba(255,255,255,0.5);
+  width:2.5rem;
+  background-color: #29ABE2;
+}
+.worker-avatar {	
+  width:2rem;   
+  padding: 0em;
+  background-color: rgba(255,255,255,0.5);
+}
+.name {color: #FFFFFF;	font-family: Roboto;}
+.location {
+	height: 16px;
+	width: 78px;
+	color: rgba(255,255,255,0.6);
+	font-family: Roboto;
+	font-size: 14px;
+	line-height: 16px;
+}
+.CTA {
+  width: 116px;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #ffffff;
+}
+.Rectangle-2-Copy-19 {
+  height: 457px;
+  border-radius: 3px;
+  background-color: #f4f7fa;
+  border: solid 1px #e2e9ef;
+}
+
+.Rectangle-2-Copy-13 {
+  height: 190px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #e2e9ef;
+}
+.material-icons.md-light { 
+  color: rgba(255, 255, 255, 1);
+}
+.material-icons.md-dark { 
+  color: rgba(0, 0, 0, 0.54);
+}
+.material-icons.md-18 { 
+  font-size: 16px;
+}
+.material-icons.md-bg-blue { 
+  background-color: #29ABE2;  
+  padding: 8px;
+}
+.material-icons.md-bg-green { 
+  background-color: #96cb17;  
+  padding: 8px;
+}
+.material-icons.md-bg-grey { 
+  background-color: #e2e9ef;  
+  padding: 8px;
+}
+.ico-gold { 
+  color: gold;
+}
+.ico-blue { 
+  color: #29ABE2;
+}
+.ico-green { 
+  color: #96cb17;
+}
+.danger {
+  color: red;
+}
+.ico-grey { 
+  color: rgba(255,255,255,0.5);
+}
+.ico-white { 
+  color: #FFFFFF;
+}
+.fadeBG{
+  background-color: #f4f7fa;
+}
+.border-b-0{
+  border-bottom: 0px;
+}
+.modal-backdrop.fade{
+  opacity: .3;
+}
+.nav-item.aroundBorderLight{  
+  border-radius: 3px;
+  border: solid 1px #e2e9ef;
+}
+
+.open > .dropdown-menu {
+  display: block;
+}
+.open > a {
+  outline: 0;
+}
+
+.dottedBorder{ 
+  border-style:dotted;
+}
+
+.lightBorder{  
+  border-radius: 3px;
+  border: solid 1px #e2e9ef;
+}
+
+.centered {
+    text-align: center;
+}
+
+.roundedBorder
+{
+    padding: 5px 10px;
+    display: inline-block;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    -moz-box-shadow: 0px 0px 2px #888;
+    -webkit-box-shadow: 0px 0px 2px #888;
+    box-shadow: 0px 0px 2px #888;
+}
+
+.pac-container{
+  z-index:1100;
+}
+
+.modal-md{
+  width: 300px;
+}
+
+.form-control.ng-dirty.ng-invalid{
+    border: 1px solid red;
+}
+
+.form-group.ng-dirty.ng-invalid{
+    border-bottom: 1px solid red;
+}
+
+.chat {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}

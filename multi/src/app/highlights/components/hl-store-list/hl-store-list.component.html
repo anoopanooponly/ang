@@ -1,0 +1,13 @@
+<div class="content">
+    <div style="text-align:center;z-index:1000;">
+    <mdl-spinner *ngIf="loadingSpinnerOn" class="progress contentZIndex" [active]="true"></mdl-spinner>
+</div>
+    <div *ngFor="let item of highlightsService.storesHavingCamera">
+        <div>
+            <hl-store [store]="item"></hl-store>
+        </div>
+    </div>
+</div>
+<!--<div style="text-align:center;z-index:1000;">
+    <mdl-spinner *ngIf="!dataLoaded" class="progress contentZIndex" [active]="true"></mdl-spinner>
+</div>-->

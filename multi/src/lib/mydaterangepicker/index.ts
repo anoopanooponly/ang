@@ -1,0 +1,1 @@
+export * from './dist/my-date-range-picker.module';

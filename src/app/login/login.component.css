@@ -1,0 +1,481 @@
+/*.img-dev {
+    padding-left: 40px;
+    padding-top: 4px;
+    padding-bottom: 5px;
+}
+
+img {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
+
+.image {
+    width: 134px;
+    height: 92px;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 80px;
+}
+
+.footer {
+    background-color: #494949;
+    text-align: center;
+    vertical-align: bottom;
+    padding-left: 100px;
+    padding: 20px;
+    color: #9fa0a4;
+}
+
+a {
+    color: #9fa0a4;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: #2a6496;
+    text-decoration: underline;
+}
+
+.image-div {
+    width: 300px;
+    height: 160px;
+    padding-left: 120px;
+}
+
+.outer-div {
+    background: #FFFFFF;
+}
+
+.login-div-inner {
+    background: #f8f8f8;
+}
+
+input {
+    margin: 3px;
+    height: 30px;
+    width: 344px;
+    font-size: small;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin: 8px;
+    border-color: #CCCCCC;
+    border-width: 1px;
+    padding-left: 10px;
+}
+
+.button {
+    background: #39B3D7;
+    color: white;
+    font-size: larger;
+    height: 45px;
+    width: 357px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 5px;
+    margin-top: 8px;
+    border-color: #CCCCCC;
+    border-width: 1px;
+}
+
+button {
+    width: 70px;
+    height: 30px;
+    color: black;
+    background: #CCCCCC;
+    border-color: white;
+    float: right;
+    margin-top: -10px;
+    margin-right: 10px;
+}
+
+.linkButton {
+    background: none!important;
+    border: none;
+    padding-left: 10 !important;
+    font-size: small;
+   
+    cursor: pointer;
+    color: #39B3D7;
+}
+
+#forgotPopup {
+    height: 160px;
+    width: 300px;
+    background: #F4A100;
+    color: white;
+    padding: 5px;
+    box-shadow: 3px 3px;
+    margin-top: -260px;
+    margin-left: 50px;
+    vertical-align: top;
+    display: inline-block;
+    opacity: .91;
+}
+
+h3 {
+    text-decoration: underline;
+}
+
+.mdl-layout {
+    align-items: center;
+    justify-content: center;
+}
+
+.mdl-layout__content {
+    padding: 24px;
+    flex: none;
+}
+
+.mdl-card__actions {
+    padding-left: 22px;
+    padding-right: 3px;
+}
+
+.mdl-card {
+    background-color: #F8F8F8;
+}
+
+.mdl-textfield,
+.mdl-card {
+    width: 400px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content {
+    width: 100%;
+    height: 100vh;
+}
+
+.mdl-color--grey-100 {
+    background-color: white !important;
+}
+
+.error {
+    color: red;
+}
+
+.forgotClass {
+    text-align: right;
+    padding: 10px;
+}
+
+.login-div {
+    overflow: hidden;
+}
+
+@media only screen and (min-height:400px) {
+    .login-div {
+        height: 72.3vh;
+    }
+}
+
+@media only screen and (min-height:450px) {
+    .login-div {
+        height: 75vh;
+    }
+}
+
+@media only screen and (min-height:500px) {
+    .login-div {
+        height: 77.3vh;
+    }
+}
+
+@media only screen and (min-height:550px) {
+    .login-div {
+        height: 79vh;
+    }
+}
+
+@media only screen and (min-height:600px) {
+    .login-div {
+        height: 80.8vh;
+    }
+}
+
+@media only screen and (min-height:650px) {
+    .login-div {
+        height: 79.6vh;
+    }
+}
+
+@media only screen and (min-height:650px) {
+    .login-div {
+        height: 82.2vh;
+    }
+}
+
+@media only screen and (min-height:700px) {
+    .login-div {
+        height: 83.4vh;
+    }
+}
+
+@media only screen and (min-height:750px) {
+    .login-div {
+        height: 84.4vh;
+    }
+}
+
+@media only screen and (min-height:800px) {
+    .login-div {
+        height: 85.4vh;
+    }
+}
+
+@media only screen and (min-height:850px) {
+    .login-div {
+        height: 86.1vh;
+    }
+}
+
+@media only screen and (min-height:900px) {
+    .login-div {
+        height: 88.2vh;
+    }
+}
+
+@media only screen and (min-height:1000px) {
+    .login-div {
+        height: 88.8vh;
+    }
+}
+
+@media only screen and (min-height:1050px) {
+    .login-div {
+        height: 88.6vh;
+    }
+}
+
+@media only screen and (min-height:1100px) {
+    .login-div {
+        height: 88.8vh;
+    }
+} */
+
+.new-sign-up-holder {
+    text-align: center;
+    align-content: center;
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    
+    margin-top: -9em;
+    margin-left: -11em;
+   
+}
+
+.new-sign-up {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    border: 1px solid #ededed;
+}
+.logo-container {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 21px;
+}
+
+.sinupimg-container {
+    background-position: 10% 10%;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-color: #ffffff;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    -webkit-transition: opacity 0.3s ease-in-out 0s;
+    transition: opacity 0.3s ease-in-out 0s;
+
+}
+
+.card {
+    width: 340px;
+    height: 219px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #e2e9ef;
+}
+
+    .card .text-input {
+        width: 280px;
+        height: 40px;
+        border-radius: 4px;
+        background-color: #ffffff;
+        border: solid 1px #dfe6ee;
+    }
+
+    .card input:focus {
+        box-shadow: inset 0 0 0 3px rgba(41, 171, 226, 0.15);
+        border: solid 1px #0099fa;
+    }
+
+.Forgot-password {
+    width: 112px;
+    height: 16px;
+    font-family: Roboto;
+    font-size: 14px;
+    text-align: left;
+    color: #29abe2;
+}
+
+.New-here-Create-Acc {
+    width: 165px;
+    height: 16px;
+    font-family: Roboto;
+    font-size: 14px;
+    text-align: left;
+    color: #29abe2;
+}
+
+    .New-here-Create-Acc .text-style-1 {
+        color: #a7b9c6;
+    }
+
+.txtright {
+    text-align:right;
+}
+.divider {
+    width: 340px;
+    height: 1px;
+    border: solid 1px #e2e9ef;
+}
+
+.Social-Media-Login {
+    
+    height: 16px;
+    font-family: Roboto;
+    font-size: 14px;
+    text-align: left;
+    color: #a7b9c6;
+    text-align:center;
+    margin-bottom:38px;
+}
+
+
+.socialMedia {
+    background: white;
+
+    position: relative;
+    top: -15px;
+    padding: 8px;
+}
+
+.Rectangle-4 {
+    width: 140.5px;
+    height: 35px;
+    border-radius: 31.8px;
+    background-color: #006fa6;
+    padding-top: 4px;
+
+}
+
+.Rectangle-4-Copy {
+    width: 140.5px;
+    height: 35px;
+    padding-top: 4px;
+    border-radius: 31.8px;
+    background-color: #3b5998;
+}
+
+.Connect-with-candida {
+    width: 330px;
+    height: 23px;
+    font-family: SFNSText;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #263340;
+    margin-bottom:38px;
+}
+
+.signinfooter {
+    position: fixed;
+    bottom: 17px;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-new-primary {
+    background-color: #29abe2;
+    color:white;
+}
+.or {
+    width: 13px;
+    height: 16px;
+    font-family: Roboto;
+    font-size: 14px;
+    text-align: left;
+    color: #a7b9c6;
+}
+
+.LinkedIn {
+    width: 60px;
+    height: 15px;
+    font-family: SFNSDisplay;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.linkedin---FontAwesome {
+    width: 13px;
+    height: 14px;
+    font-family: FontAwesome;
+    font-size: 14px;
+    letter-spacing: 0.7px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.Facebook {
+    width: 70px;
+    height: 15px;
+    font-family: SFNSDisplay;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.facebook-official---FontAwesome {
+    width: 13px;
+    height: 14px;
+    font-family: FontAwesome;
+    font-size: 14px;
+    letter-spacing: 0.7px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.nav-bg {
+    width: 1024px;
+    height: 54px;
+    background-color: #29abe2;
+}

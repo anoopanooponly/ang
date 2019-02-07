@@ -1,0 +1,10 @@
+.wrapper {
+    width: 100%;
+    /*overflow: auto;*/
+}
+
+.spinner {
+    text-align: center;
+    z-index: 1000;
+    /*margin-top: -10px;*/
+}

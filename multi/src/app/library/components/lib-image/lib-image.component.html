@@ -1,0 +1,64 @@
+<!--start of dilaog-->
+<mdl-dialog #viewClipDialog [mdl-dialog-config]="{
+              clickOutsideToClose: false,
+              styles:{'width': '700px'},
+              isModal:true,
+              openFrom: editUserButton,
+              enterTransitionDuration: 400,
+              leaveTransitionDuration: 400}" (show)="onDialogShow(dialogRef)" (hide)="onDialogHide()">
+    <h3 class="mdl-dialog__title">
+        <div class="title">
+            <div class="cameraName" style="font-size:small;">
+                <!--{{src.cameraName}} {{src.startTime}} / {{this.src.createdTime}}-->
+                {{src.videoTitle}}
+            </div>
+        </div>
+    </h3>
+
+
+    <div class="mdl-dialog__content" style="font-size: 16px;max-height:66vh;overflow:auto">
+        <div style="text-align: center;">
+
+            <video id="myVideo" *ngIf="showPlayer" controls autoplay="autoplay" preload="auto" [poster]="src.thumbnailUrlHighRes" width="640">
+                <source [src]="src.videoURL" type="video/mp4" />
+                    <p>Your browser does not support the video tag.</p>
+             </video>
+
+            <!--<div id="video-player">
+
+            </div>-->
+        </div>
+    </div>
+    <div class="mdl-dialog__actions">
+        <button mdl-button (click)="viewClipDialog.close()" mdl-ripple>Cancel</button>
+    </div>
+</mdl-dialog>
+<!--End of dilaog-->
+
+
+<div class="selection" [ngClass]="{on: src.selected, off: !src.selected}">
+    <div>
+        <a>
+            <div class="imgContainer">
+                <img *ngIf="src.selected && src.status != 'error' && src.percentComplete == 100" class="download-icon-on" src="assets/img/download_on.png" (click)="onDownloadUnSelected()" />
+                <img *ngIf="!src.selected && src.status != 'error' && src.percentComplete == 100" class="download-icon" src="assets/img/download.png" (click)="onDownloadSelected()" />
+                <img *ngIf="src.status != 'error' && src.percentComplete == 100" class="player-icon" src="assets/img/play_button.png" (click)="viewClipDialog.show()" />
+                <div *ngIf="src.displayPercentComplete && src.percentComplete < 100 && src.status != 'error'" class="clip-status">{{src.percentComplete}} %</div>
+                <div *ngIf="src.status == 'error'" class="clip-status">
+                    <div class="status-inner">Error</div>
+                </div>
+                <div class="spinner-div">
+                    <mdl-spinner *ngIf="!loaded && defaultLoaded && src.percentComplete == 100" class="spinner progress contentZIndex" [active]="true"></mdl-spinner>
+                </div>
+                <img *ngIf="src.status != 'error' && src.percentComplete == 100" class="content contentZIndex thumbnail" [hidden]="!loaded " (error)="onError()" (load)="onload()" [src]="src.thumbnailUrl" (click)="viewClipDialog.show()" />
+                <img class="content " style="background-color:black " (load)="onDefautload() " src="assets/img/thumbnail-placeholder-transparent-small.png " />
+            </div>
+        </a>
+        <!--<div class="circle ">&#x25CB;</div>-->
+        <p>
+            <span><b> {{src.displayName}} </b></span><br>
+            <!--<span>{{src.startTime}}</span>-->
+            <span>{{src.displayDescription}}</span>
+        </p>
+    </div>
+</div>

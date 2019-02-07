@@ -1,0 +1,98 @@
+input {
+    width: 116px;
+}
+
+button {
+    /*background: none!important;
+    border: none;
+    padding: 0!important;
+    font: inherit;
+    /*border is optional*/
+    /*border-bottom: 1px solid #444;*/
+    /*color: #8BDAF4!important;*/
+    /*cursor: pointer;*/
+}
+
+.single {
+    height: 324px;
+}
+
+.double {
+    height: 342px;
+}
+
+.calendar-main {
+    width: 291px;
+    background: white;
+    box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    cursor: pointer;
+    padding-bottom: 15px;
+    z-index: 999;
+    position: absolute;
+    margin-top: 48px;
+    margin-left: -208px;
+}
+
+.cancel {
+    text-align: left;
+}
+
+.date {
+    padding-left: 0;
+}
+
+.done {
+    text-align: right;
+}
+
+.div-link {
+    /*background-color: #d0d0d0;*/
+    font-size: 13px;
+    height: 34px;
+    padding: 14px;
+    background: #41B4E6;
+    margin-top: -6px;
+}
+
+.div-label {
+    margin-left: 50px;
+    margin-top: 6px;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 16px;
+}
+
+.calendar-div {
+    margin-top: -11px;
+    margin-left: 1px;
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #41B4E6;
+    margin-top: -16px;
+    position: relative;
+    left: 93%;
+    top: -6px;
+}
+
+.div-radio {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+hr {
+    width: 100%;
+}
+
+.radio1 {
+    margin-left: 5px;
+}
+
+.radio2 {
+    margin-left: 5px;
+}

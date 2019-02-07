@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <div *ngFor="let item of libraryService.storesHavingCamera">
+        <div>
+            <lib-store [store]="item"></lib-store>
+        </div>
+    </div>
+</div>
+<div class="spinner" *ngIf="loadingSpinnerOn || !dataLoaded">
+    <mdl-spinner class="progress contentZIndex" [active]="true"></mdl-spinner>
+</div>

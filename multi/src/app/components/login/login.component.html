@@ -1,0 +1,82 @@
+<div class="content">
+    <div class="mdl-color--primary" style="height:64px;">
+        <div layout="row">
+            <div class="img-dev">
+                <img src="assets\img\logo.png" />
+            </div>
+        </div>
+    </div>
+    <md-progress-bar *ngIf="disableLogin" style="height: 3px;" mode="indeterminate"></md-progress-bar>
+    <div class="mdl-layout mdl-js-layout mdl-color--grey-100 login-div">
+        <form #heroForm="ngForm" novalidate (submit)="login()">
+            <main class="mdl-layout__content">
+                <div class="mdl-card mdl-shadow--6dp">
+                    <div class="mdl-card__title mdl-color-text--white image-div">
+                        <img class="image" src="assets\img\Login.png" />
+                    </div>
+                    <!--<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                   <img src="assets\img\logo.png"pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+                </div>-->
+                    <div class="mdl-card__supporting-text">
+
+                        <div>
+                            <mdl-textfield autofocus class="form-control logintext" disableNativeValidityChecking type="email" #email="ngModel"  required name="email" id="email" type="text" label="Email" [(ngModel)]="userEmail"
+                                floating-label></mdl-textfield>
+                            <div *ngIf="email.errors && submitted" class="alert alert-danger">
+                                <div class="error" style="margin-top:-5px" [hidden]="!email.errors.required">
+                                    Please enter your email.
+                                </div>
+                                <div class="error" style="margin-top:-5px" *ngIf="email.errors && email.errors.pattern">
+                                    Email entered is invalid.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <mdl-textfield class="logintext" id="password" disableNativeValidityChecking #password="ngModel" type="password" name="password" label="Password" required="" [(ngModel)]="userPassword" floating-label>
+                            </mdl-textfield>
+                            <div *ngIf="password.errors && submitted" class="alert alert-danger">
+                                <div class="error" style="margin-top:-5px" [hidden]="!password.errors.required">
+                                    Please enter your password.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mdl-card__actions">
+                        <button *ngIf="!disableLogin" style="width:100% !important" type="submit" mdl-button mdl-button-type="raised" mdl-colored="accent" mdl-ripple>
+                             Log In
+                      </button>
+                        <button *ngIf="disableLogin" style="width:100% !important" disabled="true" mdl-button mdl-button-type="raised" mdl-colored="accent" mdl-ripple>
+                        Log In
+                      </button>
+                    </div>
+                    <div class="forgotClass">
+                        <a (click)="onDialogShow()" tabindex="0" type="button" class="linkButton">Forgot Password?</a>
+                    </div>
+                </div>
+            </main>
+        </form>
+    </div>
+    <!--<hls-player></hls-player>-->
+
+
+    <!--<div class="ui card swipe-box" 
+      *ngFor="let avatar of avatars; let idx=index"
+      (swipeleft)="swipe(idx, $event.type)" (pan)="dragMe()" (swiperight)="swipe(idx, $event.type)" 
+      [class.visible]="avatar.visible" [class.hidden]="!avatar.visible">
+      <div class="image">
+        <img [src]="avatar.image" [alt]="avatar.name">
+      </div>
+      <div class="content">
+        <a class="header">{{avatar.name}}</a>
+      </div>
+    </div>-->
+
+    <div class="footer">
+        <a target="_blank" href="http://www.multiSight.com">MultiSight™ ©</a>
+        <a target="_blank" href="http://www.schneider-electric.us/en/">2013 Schneider Electric</a> |
+        <a target="_blank" href="http://www.schneider-electric.us/sites/us/en/general/legal-information/legal-information.page">Privacy Policy</a> |
+        <a target="_blank" href="https://www.dropbox.com/s/35ch3hiywyryjep/MultiSight%20Press%20Release%209-16-2013.pdf">Press Release</a>
+    </div>
+</div>

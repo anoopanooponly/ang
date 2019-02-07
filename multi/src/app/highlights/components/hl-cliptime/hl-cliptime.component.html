@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="title">
+        {{clipData.clipDate}}
+    </div>
+    <div *ngIf="(clipData == null || clipData.cameraShortList == null ||  clipData.cameraShortList.length <= 0)">
+        <p style="text-align:center;color:#b2b3b3;">No camera details to be displayed.</p>
+    </div>
+    <div *ngIf="clipData != null">
+        <div *ngFor="let item of clipData.cameraShortList " class="box ">
+            <lib-image [src]="item" (onImageClicked)="onImageSelected($event)"></lib-image>
+        </div>
+        <div *ngIf="clipData.cameraList !=null && clipData.cameraList.length >= 8" class="button-div">
+            <button (click)="onSeeMoreClick(clipData.clipDate)">See more from {{clipData.clipDate}}</button>
+        </div>
+    </div>
+</div>
+
+
+<!--<div *ngFor="let item of clipData.cameraShortList" class="box">
+ 
+    <div class="temp">
+        <lib-image [src]="item"></lib-image>
+    </div>
+</div>-->

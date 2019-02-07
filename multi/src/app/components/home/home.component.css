@@ -1,0 +1,291 @@
+.layout-header {
+    background: #353638;
+    min-height: 52px !important;
+    margin-top: 8px !important;
+}
+
+a {
+    padding: 4px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.blue-btn {
+    background: #42B4E6;
+    /* background: : rgba(66,182,230,1); */
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    font-size: 17px;
+    margin-top: -3px;
+    vertical-align: -webkit-baseline-middle;
+    color: white;
+    margin-right: -5px;
+    border-color: #42B4E6;
+    margin-right: -5px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.nav_top {
+    height: 8px;
+    background: #41B4E6;
+    position: fixed;
+    width: 100%;
+    z-index: 9994;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+.menubar-sm {
+    color: white;
+    overflow: hidden;
+}
+
+.logout-div {
+    color: white;
+    cursor: pointer;
+    margin-top: -2px;
+    margin-right: -9px;
+    text-align: right;
+    padding-left: 13px;
+}
+
+.settings-div {
+    color: white;
+    cursor: pointer;
+    margin-top: -2px;
+    text-align: right;
+    padding-left: 7px;
+}
+
+.user-span {
+    min-width: 231px;
+}
+
+.userNameDiv {
+    text-align: right;
+    color: white;
+    padding-right: 12px;
+    font-size: 17px;
+}
+
+.userNameDivSm {
+    color: white;
+    padding-left: 20px;
+}
+
+.image {
+    width: 183px;
+    height: 48px;
+    margin-top: 11px;
+    margin-left: 20px;
+}
+
+a:active {
+    padding: 4px;
+    color: white;
+    text-decoration: underline;
+}
+
+.mdl-layout--no-desktop-drawer-button {
+    height: 44px !important;
+}
+
+.mdl-navigation>a {
+    padding: 4px;
+    text-decoration: none;
+    color: black !important;
+}
+
+#topdiv {
+    padding-top: 10px;
+    padding-left: 15px;
+    text-align: left;
+    height: 44px;
+    background: #353638;
+    padding-right: 10px;
+    width: 97%;
+}
+
+nav {
+    background: none;
+    text-align: left;
+    padding-top: 4px;
+}
+
+button {
+    width: 70px;
+    height: 30px;
+    color: black;
+    background: #CCCCCC;
+    border-color: white;
+    float: right;
+    margin-top: -29px;
+    margin-right: 10px;
+}
+
+#userName {
+    margin-top: 21px;
+    margin-right: 90px;
+    font-size: small;
+    color: black;
+}
+
+.progress-bar-spacer {
+    height: 3px;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+md-toolbar {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    font-weight: 100;
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none !important;
+    color: #ffffff;
+    font-weight: 300;
+    margin: 0 10px;
+}
+
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+    transition: all .5s;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+.md-active:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100% !important;
+    content: '.';
+    color: transparent;
+    background: #ffffff;
+    height: 1px;
+}
+
+.md-active {
+    font-weight: bold !important;
+}
+
+
+/* stroke */
+
+nav.stroke ul li a {
+    position: relative;
+}
+
+nav.stroke ul li a:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: #ffffff;
+    height: 1px;
+}
+
+nav.stroke ul li a:hover:after {
+    width: 100%;
+}
+
+.content {
+    background-color: #eeeeee;
+    margin: 20px;
+    height: 87% !important;
+}
+
+.mdl-layout__drawer-button {
+    color: rgb(255, 255, 255) !important;
+}
+
+.menu-div {
+    min-width: 463px;
+}
+
+@media screen and (min-width: 600px) {
+    .mdl-layout__drawer-button {
+        display: block !important;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    .mdl-layout__drawer-button {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .mdl-layout__drawer-button {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .mdl-layout__drawer-button {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .mdl-layout__drawer-button {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 1034px) {
+    .userNameDiv {
+        visibility: hidden;
+        max-width: 1px;
+    }
+    .menu-div {
+        max-width: 469px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #userName {
+        padding-left: 79%;
+    }
+    .menu-div {
+        visibility: hidden;
+        min-width: 5px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .menu-div {
+        visibility: hidden;
+        min-width: 5px;
+    }
+    #userName {
+        padding-left: 10%;
+    }
+}

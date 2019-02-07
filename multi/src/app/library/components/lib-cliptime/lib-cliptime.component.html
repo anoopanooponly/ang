@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div *ngIf="libraryService.LibraryGroupBy == 'TimeOfClip'" class="title">
+        {{clipData.clipDate}}
+    </div>
+    <div *ngIf="libraryService.LibraryGroupBy == 'TimeCreated'" class="title">
+        {{clipData.createdDate}}
+    </div>
+    <div *ngIf="(clipData.cameraShortList == null || clipData.itemCount <= 0)">
+        <p style="text-align:center;color:#b2b3b3;">No camera details to be displayed.</p>
+    </div>
+    <div *ngIf="clipData.cameraShortList !=null && clipData.itemCount > 0">
+        <div *ngFor="let item of clipData.cameraShortList" class="box">
+            <lib-image [src]="item" (onImageClicked)="onImageSelected($event)"></lib-image>
+        </div>
+        <div *ngIf="clipData.cameraShortList != null && clipData.itemCount > 8" class="button-div">
+            <div *ngIf="libraryService.LibraryGroupBy == 'TimeOfClip'">
+                <button (click)="onSeeMoreClick()">See more from {{clipData.clipDate}}</button>
+            </div>
+            <div *ngIf="libraryService.LibraryGroupBy == 'TimeCreated'">
+                <button (click)="onSeeMoreClick()">See more from {{clipData.createdDate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+    <defs>
+        <rect id="a" width="30" height="30" rx="3"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <mask id="b" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="#29ABE2" xlink:href="#a"/>
+        <text fill="#FFF" font-family="material" font-size="20" mask="url(#b)">
+            <tspan x="5" y="22"></tspan>
+        </text>
+    </g>
+</svg>

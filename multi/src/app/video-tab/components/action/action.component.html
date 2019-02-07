@@ -1,0 +1,74 @@
+<div class="actionContent" [style.right]="rightPos + 'px'">
+    <div class="action-inner" layout="row">
+
+        <table>
+            <tr>
+                <td class="col1">
+                    <div class="radio-div">
+                        <div [ngClass]="{selectedRadio: hasStoreSelected, unSelectedRadio: !hasStoreSelected}" class="store-radio">
+                            <mdl-radio style="font-size:17px !important;" name="group1" value="1" [(ngModel)]="mode" mdl-ripple (change)="onStoreRadioChange()">Stores</mdl-radio>
+                        </div>
+                        <div [ngClass]="{selectedRadio: !hasStoreSelected, unSelectedRadio: hasStoreSelected}" class="view-radio">
+                            <mdl-radio style="font-size:17px !important;" name="group1" value="0" [(ngModel)]="mode" mdl-ripple (change)="onViewRadioChange()">Views</mdl-radio>
+                        </div>
+                    </div>
+                </td>
+                <td class="col2">
+                    <div class="dropdown-div" layout="row">
+                        <div *ngIf="hasStoreSelected" class="storeview-ddl">
+                            <div class="label label-visibility">Pick a Store</div>
+                            <div>
+                                <mdl-select (change)="onStoreChange(selectedStore)" [(ngModel)]="selectedStore" [disabled]="mode == 0" [placeholder]="mode == 1 ? 'Select Store':'All Stores'">
+                                    <mdl-option *ngFor="let store of stores" [value]="store.id">{{store.shortName}}</mdl-option>
+                                </mdl-select>
+                            </div>
+                        </div>
+                        <div *ngIf="!hasStoreSelected" class="storeview-ddl">
+                            <div class="label label-visibility">Pick a View</div>
+                            <div>
+                                <mdl-select (change)="onViewChange(selectedView)" [(ngModel)]="selectedView" [disabled]="mode == 1" [placeholder]="mode == 0 ? 'Select View':'All Views'">
+                                    <mdl-option *ngFor="let view of views" [value]="view.id">{{view.shortName}}</mdl-option>
+                                </mdl-select>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="col3">
+
+                    <div flex layout="row" *ngIf="isVideoplayer" class="iconIfVideo">
+                        <div class="filter">
+                            <app-filter (reload)="reload()"></app-filter>
+                        </div>
+                        <div class="calendericon" flex layout="row">
+                            <button mdl-button mdl-ripple mdl-tooltip="set date/time for player" (click)="onCalendarClick()">
+                                <object width="27" height="25" id="svg1" data="assets\img\calendar-icon.svg" type="image/svg+xml"></object>
+                            </button>
+                            <div class="create-clip">
+                                <create-clip></create-clip>
+                            </div>
+                        </div>
+                        <div class="calendar" *ngIf="actionService.PopupHidden">
+                            <player-calendar (buttonClicked)="calenderButtonClick($event)"></player-calendar>
+                        </div>
+
+                    </div>
+
+                    <div flex layout="row" *ngIf="!isVideoplayer" [ngClass]="{iconDivHeatOn: heatmapService.heatmapOn, iconDivHeatOff: !heatmapService.heatmapOn}">
+                        <div [ngClass]="{iconInnerHeatOn: heatmapService.heatmapOn, iconInnerHeatOff: !heatmapService.heatmapOn}" flex layout="row">
+                            <div flex layout="row">
+                                <div class="filter">
+                                    <app-filter (reload)="reload()"></app-filter>
+                                </div>
+                                <div>
+                                    <app-heatmap>Loading</app-heatmap>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--style="text-align: right;"-->
+</div>

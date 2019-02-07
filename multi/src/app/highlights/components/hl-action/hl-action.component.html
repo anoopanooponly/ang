@@ -1,0 +1,22 @@
+<div class="actionContent" [style.right]="rightPos + 'px'">
+    <div class="action-inner" layout="row" flex="100">
+        <div flex="5" class="backarrow">
+            <button mdl-tooltip="go back" (click)="onBackClick()" [hidden]="!highlightsService.seeMoreBackButtonOn">
+                <mdl-icon >arrow_back</mdl-icon> </button>
+        </div>
+        <!--<div flex="10" class="title">Highlights</div>-->
+        <div class="groupby" layout="row">
+            <!--<div flex="10" class="groupbylabel"> Group by: </div>-->
+            <label class="groupbylabel">Group by:</label>
+            <mdl-select flex="20" (change)="onChangeGrouping(selectedGroup)" class="ddl" [(ngModel)]="selectedGroup">
+                <mdl-option value="Ungrouped">Ungrouped</mdl-option>
+                <mdl-option value="ReelName">Highlight Reel Name</mdl-option>
+                <mdl-option value="StoreName">Store Name</mdl-option>
+                <mdl-option value="TimeOfClip">Date/Time of Clip</mdl-option>
+            </mdl-select>
+        </div>
+        <div flex="5" class="filter-div">
+            <app-filter (reload)="reload()"></app-filter>
+        </div>
+    </div>
+</div>

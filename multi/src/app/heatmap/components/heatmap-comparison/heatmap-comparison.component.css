@@ -1,0 +1,146 @@
+.main {
+    padding-bottom: 50px;
+}
+
+.wrapper {
+    background-color: white;
+    border-radius: 1% 1% 1% 1%;
+    -webkit-border-radius: 1% 1% 1% 1%;
+    background: rgba(253, 253, 253, 0.7);
+    box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    width: 75%;
+    margin-left: 10%;
+    padding-top: 35px;
+    padding-left: 35px;
+    padding-bottom: 35px;
+    padding-right: 30px;
+}
+
+.cameara-div {
+    float: left;
+}
+
+.camera-name {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.cam1 {
+    /*padding-left: 2%;
+    flex: 1;*/
+    margin-right: 10px;
+}
+
+.cam2 {
+    /*padding-left: 2%;
+    flex: 2;*/
+}
+
+.camera-main {
+    /*display: flex;
+    padding-left: 7%;
+    padding-top: 3%;
+    width: 100%;
+    height: 100%;*/
+}
+
+.range-div {
+    color: black;
+    font-size: 13px;
+    text-align: center;
+}
+
+.close-div {
+    margin-top: -31px;
+    float: right;
+    margin-right: -25px;
+}
+
+img {
+    width: 98%;
+    height: 98%;
+    margin-right: 2px;
+    background: black;
+}
+
+
+/*@media screen and (min-width: 300px) {
+    img {
+        width: 90%;
+        height: 90%;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    img {
+        width: 90%;
+        height: 90%;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    img {
+        width: 90%;
+        height: 90%;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    img {
+        width: 90%;
+        height: 90%;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (min-width: 900px) and (min-width: 958px) {
+    img {
+        width: 90%;
+        height: 90%;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (min-width: 960px) and (min-width: 1279px) {
+    img {
+        width: 90%;
+        height: 90%;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1499px) {
+    img {
+        width: 90%;
+        height: 90%;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (min-width: 1500px) and (max-width: 1679px) {
+    img {
+        width: 90%;
+        height: 90%;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (min-width: 1680px) and (max-width: 1899px) {
+    img {
+        width: 98%;
+        height: 98%;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    img {
+        width: 98%;
+        height: 98%;
+        margin-right: 2px;
+    }
+}*/

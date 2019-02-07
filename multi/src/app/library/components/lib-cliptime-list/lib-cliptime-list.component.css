@@ -1,0 +1,10 @@
+.content {
+    /*margin: 20px;*/
+    /*padding-top: 30px;*/
+}
+
+.spinner {
+    text-align: center;
+    z-index: 1000;
+    /*margin-top: -10px;*/
+}

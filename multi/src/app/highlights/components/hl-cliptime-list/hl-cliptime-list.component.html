@@ -1,0 +1,13 @@
+<!--<div style="text-align:center;z-index:1000;">
+    <mdl-spinner *ngIf="highlightsService.loadingSpinnerOn" class="progress contentZIndex" [active]="true"></mdl-spinner>
+</div>-->
+<div class="content">
+    <div *ngFor="let item of highlightsService.highlightDateWiseList">
+        <div>
+            <hl-cliptime [clipData]="item"></hl-cliptime>
+        </div>
+    </div>
+</div>
+<div style="text-align:center;z-index:1000;">
+    <mdl-spinner *ngIf="!dataLoaded || highlightsService.loadingSpinnerOn" class="progress contentZIndex" [active]="true"></mdl-spinner>
+</div>

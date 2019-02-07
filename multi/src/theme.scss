@@ -1,0 +1,145 @@
+@import '~@angular/material/core/theming/all-theme';
+@import '../node_modules/@angular/material/core/theming/theming';
+@include md-core();
+@import "~angular2-mdl/scss/color-definitions";
+$palette-blue: "227,242,253" "187,222,251" "144,202,249" "100,181,246" "60,180,230" "33,150,243" "30,136,229" "25,118,210" "21,101,192" "13,71,161" "130,177,255" "68,138,255" "41,121,255" "41,98,255";
+$palette-blue-50: nth($palette-blue, 1);
+$palette-blue-100: nth($palette-blue, 2);
+$palette-blue-200: nth($palette-blue, 3);
+$palette-blue-300: nth($palette-blue, 4);
+$palette-blue-400: nth($palette-blue, 5);
+$palette-blue-500: nth($palette-blue, 6);
+$palette-blue-600: nth($palette-blue, 7);
+$palette-blue-700: nth($palette-blue, 8);
+$palette-blue-800: nth($palette-blue, 9);
+$palette-blue-900: nth($palette-blue, 10);
+$palette-blue-A100: nth($palette-blue, 11);
+$palette-blue-A200: nth($palette-blue, 12);
+$palette-blue-A400: nth($palette-blue, 13);
+$palette-blue-A700: nth($palette-blue, 14);
+
+/*$palette-orange:
+"255,243,224"
+"255,224,178"
+"255,204,128"
+"255,183,77"
+"255,167,38"
+"244,161,0"
+"251,140,0"
+"245,124,0"
+"239,108,0"
+"230,81,0"
+"255,209,128"
+"255,171,64"
+"255,145,0"
+"255,109,0";
+
+$palette-orange-50: nth($palette-orange, 1);
+$palette-orange-100: nth($palette-orange, 2);
+$palette-orange-200: nth($palette-orange, 3);
+$palette-orange-300: nth($palette-orange, 4);
+$palette-orange-400: nth($palette-orange, 5);
+$palette-orange-500: nth($palette-orange, 6);
+$palette-orange-600: nth($palette-orange, 7);
+$palette-orange-700: nth($palette-orange, 8);
+$palette-orange-800: nth($palette-orange, 9);
+$palette-orange-900: nth($palette-orange, 10);
+$palette-orange-A100: nth($palette-orange, 11);
+$palette-orange-A200: nth($palette-orange, 12);
+$palette-orange-A400: nth($palette-orange, 13);
+$palette-orange-A700: nth($palette-orange, 14);*/
+
+$color-primary: $palette-blue-400;
+$color-primary-dark: $palette-blue-400;
+$color-accent: $palette-light-blue-A200;
+$color-primary-contrast: $color-dark-contrast;
+$color-accent-contrast: $color-dark-contrast;
+@import '~angular2-mdl/scss/material-design-lite';
+@import '~@angular2-mdl-ext/popover/popover';
+@import '~@angular2-mdl-ext/select/select';
+$md-orange: ( 50: #fff3e0, 100: #ffe0b2, 200: #ffcc80, 300: #ffb74d, 400: #ffa726, 500: #ff9800, 600: #fb8c00, 700: #f57c00, 800: #ef6c00, 900: #F4A100, A100: #ffd180, A200: #ffab40, A400: #ff9100, A700: #ff6d00, contrast: ( 50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: $black-87-opacity, 400: $black-87-opacity, 500: $black-87-opacity, 600: $black-87-opacity, 700: $black-87-opacity, 800: white, 900: white, A100: $black-87-opacity, A200: $black-87-opacity, A400: $black-87-opacity, A700: black, ));
+$primary: md-palette($md-blue, 400);
+$sidenav-background-color: #353638;
+$accent: md-palette($md-light-blue, 600, A100, A400);
+$warn: md-palette($md-red, 600);
+$theme: md-light-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+.mdl-radio__outer-circle {
+    top: 6px !important;
+    left: 2px !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    border-color: #2972A8 !important;
+}
+
+.mdl-radio__inner-circle {
+    top: 9px !important;
+    left: 5px !important;
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 50% !important;
+    background: #2972A8 !important;
+}
+
+.mdl-textfield__input {
+    background: white;
+    border: solid 1px #9FA0A4;
+    padding-left: 5px;
+}
+
+.mdl-select__toggle {
+    margin-top: -1.95rem !important;
+}
+
+@media \screen\0 {
+    .mdl-select__toggle {
+        margin-top: -1.7rem !important;
+    }
+}
+
+@media \screen\9 {
+    .mdl-select__toggle {
+        margin-top: -1.7rem !important;
+    }
+}
+
+.mdl-textfield.is-focused .mdl-textfield__label:after {
+    left: 0;
+    visibility: visible;
+    width: 97%;
+}
+
+.mdl-radio__label {
+    margin-left: -7px;
+}
+
+.mdl-textfield__label {
+    padding-left: 6px;
+}
+
+.mdl-textfield {
+    width: 204px !important;
+}
+
+.mdl-select .mdl-textfield__input {
+    box-sizing: border-box;
+    cursor: pointer;
+    overflow: hidden;
+    padding-right: 1.5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 30px !important;
+}
+
+.mdl-textfield.logintext {
+    width: 360px !important;
+}
+
+.mdl-button.people {
+    min-width: 107px;
+    text-transform: none !important;
+    /* border-radius: 3px 3px 3px 3px !important;
+    -moz-border-radius: 3px 3px 3px 3px !important;
+    -webkit-border-radius: 3px 3px 3px 3px !important;*/
+}

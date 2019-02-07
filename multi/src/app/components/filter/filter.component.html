@@ -1,0 +1,44 @@
+<!--<button id="filterBtn" mdl-tooltip="filter stores" [style.color]="filterSet ? 'rgb(244,161,0)' : 'black'" mdl-button mdl-button-type="icon" (click)="onFilterClick()">-->
+<!--<mdl-icon>filter_list</mdl-icon>-->
+<!--</button>-->
+<!--<object *ngIf="filterSet" class="filter" width="29" height="25" id="svg-filter-on" data="assets\img\filter-on-icon.svg" type="image/svg+xml" (click)="onFilterClick()"></object>
+<object *ngIf="!filterSet" class="filter" width="29" height="25" id="svg-filter-off" data="assets\img\filter-off-icon.svg" type="image/svg+xml" (click)="onFilterClick()"></object>-->
+
+<img *ngIf="filterSet" class="filter" (click)="onFilterClick()" width="29" height="25" src="assets\img\filter_on.png" />
+<img *ngIf="!filterSet" class="filter" (click)="onFilterClick()" width="29" height="25" src="assets\img\filter_off.png" />
+<div id="fromCalender" [style.top]="fromoffsetTop + 'px'" style="width: 259px;position: absolute;border: 2px solid #dddddd;background:white; margin-left: -232px;
+    z-index: 1999;" *ngIf="showFilter">
+
+    <div flex layout="row" layout-align="space-between center" style="text-align:right;background:#41B4E6">
+        <div style="color: white;  font-size: larger; padding-left: 9px;">
+            ({{storeCount}}) stores
+        </div>
+        <div>
+            <div>
+                <button mdl-button mdl-button-type="icon" (click)="closeFilter()">
+     <mdl-icon>close</mdl-icon>
+   </button>
+            </div>
+        </div>
+    </div>
+
+    <mdl-list style="max-height:35vh;overflow:auto">
+        <mdl-list-item mdl-ripple *ngFor="let filter of filters">
+            <mdl-list-item-primary-content>
+                <!--<mdl-icon mdl-list-item-avatar>person</mdl-icon>-->
+                {{filter.filterName}}&nbsp;({{filter.siteCount}})
+            </mdl-list-item-primary-content>
+            <mdl-list-item-secondary-action>
+                <mdl-checkbox (change)="onSelect(filter.selected)" [(ngModel)]="filter.selected" mdl-ripple></mdl-checkbox>
+            </mdl-list-item-secondary-action>
+        </mdl-list-item>
+
+    </mdl-list>
+    <hr>
+    <div layout="row" layout-align="space-between center" style="paddding:10px">
+        <button mdl-button (click)="closeFilter()" mdl-ripple>Cancel</button>
+        <button mdl-button (click)="applyFilter()" mdl-ripple>Apply Filter</button>
+
+    </div>
+
+</div>

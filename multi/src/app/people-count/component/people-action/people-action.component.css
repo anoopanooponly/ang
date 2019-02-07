@@ -1,0 +1,142 @@
+.title {
+    padding-top: 3px;
+    padding-left: 33px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+[data-hidden="true"] {
+    display: none !important
+}
+
+div {
+    text-align: left;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+h3 {
+    text-align: left;
+    float: left;
+}
+
+
+/*.calendar{
+    width:250px;
+    height: 350px;
+   flex: 2;
+    z-index: 999;
+    margin-left: -200px;
+    margin-top: 24px;
+}
+/*.calendar {
+  
+  
+   margin-top:-5px
+    
+}
+/*.actionContent {
+    background-color: rgb(255, 222, 157);
+    height: 33px;
+    padding-top: 7px;
+    padding-left: 13px;
+}*/
+
+.actionContent {
+    /*  background-color: rgb(255, 255, 255);
+    height: 33px;
+    padding-top: 11px;
+    padding-left: 13px;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    top: 56px;
+    border-bottom: 1px solid gainsboro;
+     margin-bottom: 29px;*/
+    background-color: #e8e8e8;
+    height: 55px;
+    z-index: 999;
+    width: 100%;
+    border-bottom: 1px solid gainsboro;
+}
+
+.calendericon {
+    float: left;
+    /*  margin-left: -80px;
+    display: flex;
+    flex-direction: column;*/
+}
+
+.action-inner {
+    /* float: left;*/
+    padding-left: 300px;
+    padding-top: 8px;
+}
+
+.md-radio-button {
+    margin-right: 8px !important;
+}
+
+.end {
+    text-align: right;
+    padding-right: 14px;
+}
+
+.radio-demo {
+    padding: 50px;
+}
+
+.select-option {
+    white-space: nowrap;
+    width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.heat-class {
+    float: right;
+    vertical-align: top;
+}
+
+.curved {
+    border-radius: 25px;
+}
+
+.wrapper {
+    margin-left: -50px;
+    display: flex;
+    flex-direction: column;
+    /*min-height: 100vh;*/
+}
+
+.img-div {
+    margin-left: -40px;
+    flex: 1;
+    text-align: right;
+    width: 73px;
+}
+
+.calendar {
+    flex: 2;
+    z-index: 999;
+    margin-left: -200px;
+    margin-top: 27px;
+}
+
+.pick-store {
+    margin-top: -19px;
+    padding-left: 28.3%;
+}
+
+.Store {
+    float: left;
+    text-align: right;
+    margin-top: 25px;
+    padding-right: 5px;
+    font-size: 17px;
+}
+
+.download-icon {
+    text-align: right;
+    margin-right: 18px;
+    cursor: pointer;
+}

@@ -1,0 +1,115 @@
+input {
+    width: 116px;
+}
+
+button {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    font: inherit;
+    /*border is optional*/
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+}
+
+.calendar-div {
+    margin-top: -3px;
+    margin-left: 1px;
+}
+
+.calendar-main {
+    width: 400px;
+    height: 560px;
+    padding-left: 0px;
+    padding-top: 0px;
+    margin-top: -4px;
+    border-radius: 2% 2% 2% 2%;
+    background: white;
+    box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    right: 36px;
+    padding: 0px;
+    z-index: 999;
+}
+
+.textarea {
+    width: 30px;
+    height: 20px;
+}
+
+.div-radio {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    padding-left: 29px;
+    padding-top: 262px;
+}
+
+radio1 {
+    flex: 1;
+}
+
+.error {
+    color: red;
+}
+
+.radio2 {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+range1 {
+    flex: 1
+}
+
+range2 {
+    flex: 2;
+}
+
+.radio3 {
+    flex: 3;
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #42b4e6;
+    margin-top: -16px;
+    margin-left: 24px;
+    position: relative;
+    left: 77%;
+    top: 1px;
+}
+
+.div-link {
+    background-color: #42b4e6;
+    height: 38px;
+    margin-top: 1px;
+    border-radius: 2% 2% 2% 2%;
+    -webkit-border-radius: 2% 2% 2% 2%;
+}
+
+.btn {
+    margin-top: 5px;
+}
+
+.div-footer {
+    background-color: #d0d0d0;
+    height: 27px;
+    margin-top: 200px;
+    border-radius: 2% 2% 2% 2%;
+}
+
+div-label {
+    margin-left: 50px;
+    margin-top: 6px;
+}
+
+.doneButton {
+    margin-left: 157px;
+}

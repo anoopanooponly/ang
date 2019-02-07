@@ -1,0 +1,171 @@
+<template #workerListTemplate let-model="item" let-index="index">
+    <div id="workerListItem" class="form-control p-2 d-flex justify-content-between"
+            style="width:20vw;" *ngIf="model.gender">                        
+        <span>
+            <img src="{{avatar_home}}/{{model.avatar}}" 
+                    class="rounded-circle img-thumbnail worker-avatar mr-2">
+            {{model.displayName}}
+        </span>
+        <span>
+            {{model.avg_review | number : '1.1-1'}}
+            <i class="fa fa-star ico-gold m-2" aria-hidden="true"></i>
+        </span>                        
+    </div>
+    <div id="workerListItem" class="form-control p-2 d-flex justify-content-between"
+            style="width:20vw;" *ngIf="model.type">                        
+        <span>
+            <i class="fa fa-users m-2" aria-hidden="true"></i>
+            {{model.displayName}}
+        </span>
+    </div>
+</template>
+<form #campaignForm="ngForm" (ngSubmit)="saveCompaign()"><div name ="main" class="row m-4">        
+    <div class="col-sm-10 mt-2">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">Campaign</li>
+            <li class="breadcrumb-item" *ngIf="campaign._id">{{campaign.name}}</li>
+            <!--<a href="#/campaign/detail/{{campaign._id}}"></a>-->
+        </ol>
+    </div>
+    <div class="col-sm-2 mt-3">
+        <button type="submit" class="btn btn-success"            
+                [disabled]="!campaignForm.valid">Save Details</button>
+    </div>
+    <div name="leftCol" class="col-sm-4">        
+        <div class="card fadeBG m-2">
+            <div class="card-block">
+                <div class="form-group pb-2">
+                    <label for="campaignName">Campaign Name</label>
+                    <input id="campaignName" type="text" name="campaignName"
+                            placeholder="Campaign Name" aria-describedby="campaignName"
+                            [(ngModel)]="campaign.name" class="form-control" #campaignName="ngModel"
+                            required>
+                    <div *ngIf="campaignName.errors && campaignName.dirty" class="danger">
+                        <div [hidden]="!campaignName.errors.required">
+                            Required!
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group pb-2">
+                    <label for="campaignName">Message Type</label>
+                    <select class="form-control" id="messageType" [(ngModel)]="campaign.messageType"
+                        name="messageType">
+                        <option value="App">App</option>
+                        <option value="SMS">SMS</option> 
+                        <option value="Email">Email</option>                               
+                    </select>
+                </div>
+                <div class="form-group pb-2">
+                    <label id="respLabel" for="autoReply">Automated Response</label>
+                    <textarea class="form-control" id="autoReply" rows="3" 
+                            placeholder="Automated response to the candidates" 
+                            aria-describedby="respLabel" name="autoReply"
+                            [(ngModel)]="campaign.autoReply" #autoReply="ngModel" required></textarea>                    
+                    <div *ngIf="autoReply.errors && autoReply.dirty" class="danger">
+                        <div [hidden]="!autoReply.errors.required">
+                            Required!
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <div class="card fadeBG m-2 p-2">
+            <!--<pre class="card card-block card-header">Model: {{workerFilter | json}}</pre>-->
+            <input [(ngModel)]="workerFilter"
+                    [typeahead]="workerDataSource"
+                    (typeaheadLoading)="loadingWorkers($event)"
+                    (typeaheadNoResults)="noWorkerFound($event)"
+                    (typeaheadOnSelect)="onSelectWorker($event)"
+                    [typeaheadItemTemplate]="workerListTemplate"
+                    typeaheadOptionsLimit="20"
+                    typeaheadOptionField="displayName"
+                    placeholder="Search for worker and list."
+                    class="form-control"
+                    name="workerFilter">
+            <div *ngIf="typeaheadLoading===true">
+                <i class="glyphicon glyphicon-refresh ng-hide"></i>
+            </div>
+            <div *ngIf="typeaheadNoResults===true">
+                <i class="glyphicon glyphicon-remove"></i> No Worker Found
+            </div>
+        </div>
+        <ul class="list-group m-2">
+            <li class="list-group-item justify-content-between"
+                *ngFor="let list of campaign.lists; let listsIndex = index">                        
+                <span>
+                    <i class="fa fa-users m-2" aria-hidden="true"></i>{{list.name}}
+                </span>                        
+                <span>                        
+                    <button type="button" class="btn btn-secondary" (click)="removeList(listsIndex)">
+                        <i class="fa fa-trash-o"></i>
+                    </button>
+                </span>                        
+            </li>
+            <li class="list-group-item justify-content-between"
+                *ngFor="let worker of campaign.workers; let workerIndex = index">                        
+                <span>
+                    <img src="{{avatar_home}}/{{worker.avatar}}" 
+                            class="rounded-circle img-thumbnail worker-avatar mr-2">
+                    {{worker.name.last_name}} {{worker.name.first_name}}
+                </span>                        
+                <span>
+                    <img src="assets/images/chat.png" class="chat">
+                    <button type="button" class="btn btn-secondary" (click)="removeWorker(workerIndex)">
+                        <i class="fa fa-trash-o"></i>
+                    </button>
+                </span>                      
+            </li>
+        </ul>
+    </div>    
+    <div name="rightCol" class="col-sm-8 mt-2">
+        <div class="card p-3">
+            <div class="d-flex flex-column align-items-end">
+                <a (click)="exportHistory()" draggable="false"
+                            class="btn btn-secondary text-muted">
+                    <i class="fa fa-plus-square-o align-middle" aria-hidden="true"></i>
+                    <span class="ml-2 align-middle">Export History</span>
+                </a>
+            </div>
+            <div class="d-flex justify-content-between">
+                <ul class="list-group mb-4">
+                    <li class="list-group-item justify-content-between">
+                        <span class="d-flex align-items-start">
+                            Hai
+                            <span class="text-muted ml-2">
+                                19-jul-2017 12:30pm 
+                            </span>
+                        </span>
+                        <span class="d-flex align-items-end">
+                            Hi
+                            <span class="text-muted ml-2">
+                                19-jul-2017 1:30pm 
+                            </span>
+                        </span>
+                    </li>
+                    <li class="list-group-item justify-content-between" 
+                        *ngFor="let msg of campaignMessages; let msgIndex = index">
+                        <span class="d-flex align-items-start" *ngIf="msg.type=='user'">
+                            {{msg.content}}
+                            <span class="text-muted ml-2">
+                                {{msg.date | amDateFormat:'dddd, MMMM Do YYYY'}}
+                            </span>
+                        </span>
+                        <span class="d-flex align-items-end" *ngIf="msg.type=='tasker'">
+                            {{msg.content}}
+                            <span class="text-muted ml-2">
+                                {{msg.date | amDateFormat:'dddd, MMMM Do YYYY'}}
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-between">                    
+                <input id="message" type="text" name="message" placeholder="Enter Message"
+                            [(ngModel)]="newMsg" class="form-control mr-2">
+                <button type="button" class="btn btn-success ml-2" 
+                        (click)="sendMessage()">Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

@@ -1,0 +1,76 @@
+
+<div name ="main" class="row m-4">
+	<div name="leftCol" class="col-sm-4 mt-2">
+		 <div class="card mt-4" >
+            <div class="card-header d-flex justify-content-between">
+                <h4>Messages</h4>
+                <!--<a draggable="false"
+                            class="btn btn-secondary text-muted">
+                    <i class="fa fa-trash-o align-middle" aria-hidden="true"></i>
+                </a>-->
+            </div>
+            <div class="card-block">                
+                <div class="card-text">
+                     <ul class="list-thread">
+						 <li [ngClass]="{'selected': user.selected, '': !user.selected}" (click)="selectedUser(user)" class="list-group-item justify-content-between"  *ngFor="let user of messageUsers" >                        
+							<div style=" width: 86%">
+								<!--<img [src]="user.avatar" class="rounded-circle img-thumbnail worker-avatar mr-2">-->
+								<div style=" width: 93%;float:left" >{{user.username}}</div><div style="margin-top:4px; width: 6%;float:left"  *ngIf="user.messageCount > 0">
+									<span style="padding: 0.35em 0.8em;border-radius: 0.25rem;" class="badge badgeColor"> {{user.messageCount}}</span></div>
+							</div>                        
+							<span>
+								<a class="ml-4"><i class="fa " style="cursor:pointer"
+								 [ngClass]="{'fa-angle-left': !user.selected, 'fa-angle-right': user.selected}"  aria-hidden="true"></i></a>
+							</span>                        
+						</li>
+					</ul>
+                </div>
+            </div>
+        </div>
+	</div>
+	<div name="rightCol" class="col-sm-8 mt-2" *ngIf="selectedUserId != null">
+		<div class="card mt-4" >
+            <div class="card-header d-flex justify-content-between">
+               
+                <!--<a (click)="removeLocation(locIndex)" draggable="false"
+                            class="btn btn-secondary text-muted">
+                    <i class="fa fa-trash-o align-middle" aria-hidden="true"></i>
+                </a>-->
+            </div>
+            <div class="card-block">                
+                <div class="card-text">
+					<div *ngIf="selectedUserName" 
+						class="opposite-user">
+						Chatting with {{selectedUserName}}
+					</div>
+                    <ul class="message-thread">
+
+						<li *ngFor="let message of messages"  class="limsg"
+							[class.align-right]="alignMessage(message.to)"
+							
+							>
+							<div class="limsgdiv" [ngClass]="{'liright':alignMessage(message.to), 'lileft': !alignMessage(message.to)}">
+								{{ message.message}}
+							</div>
+							<div style="   margin-left: 21px;    text-align: start;  font-size: 12px;  font-style: italic; color: #9c9c9a;">
+								{{ message.fromname}} ,   {{ message.createdAt}} 
+							</div>	
+								
+						</li>
+						
+						
+					</ul>
+                </div>
+				 <div class="card-text">
+                   <textarea 
+						class="message form-control" 
+						placeholder="Type and hit Enter"
+						[(ngModel)]="message" 
+						(keyup)="sendMessage($event)"
+					></textarea>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+

@@ -1,0 +1,39 @@
+img {
+    cursor: pointer;
+}
+
+.wrapper {
+    margin-left: -101px;
+    display: flex;
+    flex-direction: column;
+    /*min-height: 100vh;*/
+}
+
+.calendar {
+    /*margin-left: -237px;*/
+}
+
+.calendar-icon {
+    float: right;
+}
+
+.heat-icon {
+    float: left;
+}
+
+.img-div {
+    width: 63px;
+    padding-left: 20px;
+}
+
+.heatOn {
+    width: 63px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.heatOff {
+    width: 18px;
+    padding-left: 20px;
+    text-align: left;
+}

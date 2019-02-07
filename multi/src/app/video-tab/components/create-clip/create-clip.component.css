@@ -1,0 +1,19 @@
+.error {
+    color: red;
+}
+
+@media screen\0 {
+
+    .margin40 {
+        margin-bottom: 45px;
+    }
+
+    .margin50 {
+        margin-bottom: 59px;
+    }
+
+    .margin30 {
+        margin-bottom: 30px;
+    }
+    
+}

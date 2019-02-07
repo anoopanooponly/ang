@@ -1,0 +1,87 @@
+
+<div class="calendar-main">
+    <div class="arrow-up"></div>
+    <div class="div-link" layout="row" layout-align="space-between center">
+     <button mdl-button (click)="onCancelClick()" style="border-bottom: 0px !important;" mdl-ripple>Cancel</button>
+     Select Date
+     <button mdl-button mdl-ripple style="border-bottom: 0px !important;" (click)="onDoneClick()">Done</button>
+      
+    </div>
+     <div class="div-label"> {{selectedDateRangeNormal}}</div>
+    <div class="calendar-div">
+     <my-date-range-picker [isRange]="false"  [options]="myDateRangePickerOptionsNormal" (dateRangeChanged)="onDateRangeChanged($event)" 
+     [selDateRange]="selectedDateRangeNormal" 
+    ></my-date-range-picker>
+   </div>
+         
+     <div class="div-radio" flex="100" layout="column">
+
+         <!--Exact time-->
+         <form #PlayerForm="ngForm" novalidate>
+        <div class="radio1" layout="row">
+          <mdl-radio  name="group11" value="0" [(ngModel)]="mode" ng-checked="True" mdl-ripple (change)="exactTimeChange()">Exact time: &nbsp;</mdl-radio>
+          <input class="textarea" type="number"  #exhour="ngModel" (keydown)= "onkeydown($event)" pattern="(1[012]|[1-9])" id="hour" min="1" max="12" name="exhour" [(ngModel)]="hour"  />
+          <input class="textarea" type="number"  #exmin="ngModel" (keydown)= "onkeydown($event)" pattern="[0-5]?[0-9]" id="min" min="0" max="59"  name="exmin"  [(ngModel)]="min"   (click)="TimeChange(hour,min,sec)" />
+          <input class="textarea" type="number"  #exsec="ngModel" (keydown)= "onkeydown($event)" pattern="[0-5]?[0-9]" id="sec"  min="0" max="59" name="exsec" [(ngModel)]="sec"   (click)="TimeChange(hour,min,sec)"/>
+          <div style="margin-top: -24px; margin-bottom: -21px; padding-left: 8px;width: 23%;">
+            <mdl-select   name="tampm" [(ngModel)]="merdian" >
+                <mdl-option value="AM">AM</mdl-option>
+                <mdl-option value="PM">PM</mdl-option>
+            </mdl-select>   
+          </div>
+           &nbsp;EDT
+        </div>
+        <div class="error" *ngIf="(exhour.errors && exhour.errors.pattern || exmin.errors && exmin.errors.pattern || exsec.errors && exsec.errors.pattern)">
+               Not a valid time.
+           </div>
+           
+        <!--Range time-->
+         <div style=" text-align: left;margin-top: 7px;">
+           <mdl-radio  name="group22" value="1" [(ngModel)]="mode" ng-checked="True" mdl-ripple (change)="rangeTimeChange()">Time range: &nbsp;</mdl-radio>
+         </div>
+         <div layout="column" flex="100" style="padding-left: 25%;min-height:50px">
+            <div class="range1" layout="row" flex="100" style="margin-bottom: 22px;">
+                Start:&nbsp;
+                <input class="textarea" type="number"  #fhour="ngModel" (keydown)= "onkeydown($event)" pattern="(1[012]|[1-9])" id="hour" min="1" max="12" [(ngModel)]="hour_range1" name="fhour" />
+                <input class="textarea"type="number"  #fmin="ngModel" (keydown)= "onkeydown($event)" pattern="[0-5]?[0-9]"  id="min" min="0" max="59"  [(ngModel)]="min_range1" name="fmin" (click)="TimeChange(hour_range1,min_range1,sec_range1)" />
+                <input class="textarea"type="number" #fsec="ngModel" (keydown)= "onkeydown($event)" pattern="[0-5]?[0-9]" id="sec" min="0" max="59" [(ngModel)]="sec_range1" name="fsec" (click)="TimeChange(hour_range1,min_range1,sec_range1)"/>
+                 <div style="margin-top: -24px; margin-bottom: -21px; padding-left: 8px;width: 23%;">
+                    <mdl-select  name="fmer"  [(ngModel)]="merdian_range1" >
+                        <mdl-option value="AM">AM</mdl-option>
+                        <mdl-option value="PM">PM</mdl-option>
+                    </mdl-select>   
+                </div>
+                  &nbsp;EDT
+            </div>
+              <div class="error" *ngIf="(fhour.errors && fhour.errors.pattern || fmin.errors && fmin.errors.pattern || fsec.errors && fsec.errors.pattern)">
+               Not a valid time.
+           </div>
+            <div  layout="row" flex="100"  style="margin-top: 11px;  padding-left: 6px;">
+                 End:&nbsp;
+                <input class="textarea" type="number"  #thour="ngModel" (keydown)= "onkeydown($event)" pattern="(1[012]|[1-9])"  min="1" max="12" [(ngModel)]="hour_range2" name="thour" />
+                <input class="textarea"type="number"  #tmin="ngModel" (keydown)= "onkeydown($event)" pattern="[0-5]?[0-9]"   min="0" max="59"  [(ngModel)]="min_range2" name="tmin"  (click)="TimeChange(hour_range2,min_range2,sec_range2)" />
+                <input class="textarea"type="number" #tsec="ngModel"  (keydown)= "onkeydown($event)" pattern="[0-5]?[0-9]"   min="0" max="59" [(ngModel)]="sec_range2" name="tsec"  (click)="TimeChange(hour_range2,min_range2,sec_range2)"/>
+                 <div style="margin-top: -24px; margin-bottom: -21px; padding-left: 8px;width: 23%;">
+                    <mdl-select  name="tmer" [(ngModel)]="merdian_range2" >
+                        <mdl-option value="AM">AM</mdl-option>
+                        <mdl-option value="PM">PM</mdl-option>
+                    </mdl-select>   
+                </div>
+                 &nbsp;EDT
+            </div>
+             <div class="error" *ngIf="(thour.errors &&thour.errors.pattern || tmin.errors && tmin.errors.pattern || tsec.errors && tsec.errors.pattern)">
+               Not a valid time.
+           </div>
+          
+          </div>
+           </form>
+        <div flex="100" layout="row" style="margin-top: 22px;">
+
+<mdl-radio name="group33" value="2" [(ngModel)]="mode" ng-checked="True" mdl-ripple (change)="shiftChange()">Shift:</mdl-radio>
+<mdl-select style="  margin-top: -22px;  width: 69%; margin-left: 8px;font-family:Roboto, Arial, Helvetica, sans-serif; font-size:16px" [(ngModel)]="selectedShift" [disabled]="mode == 1||mode==0" [placeholder]="mode == 2 ? 'Select shift':'All Shifts'">
+<mdl-option *ngFor="let s of shift" [value]="s.name">{{s.name}} ({{s.start_time}} to {{s.end_time}})</mdl-option>
+
+</mdl-select>
+</div>
+</div>
+</div>

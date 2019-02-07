@@ -1,0 +1,42 @@
+
+<div class="actionContent" [style.right]="rightPos + 'px'">
+    <div class="action-inner" layout="row" flex="100">
+        <!--div hide-xs hide-sm flex="20" class="title"> People Counting  
+             style="height:50px;padding-top: 17px;" flex layout="row" layout-align="space-between end"
+             style="width:50%"
+             </div-->
+        <!--div flex="20" flex-xs="25" flex-sm="25" class="end" style="font-size: medium; padding-top: 2px;">
+            Stores:
+        </div>
+        <div flex="20" flex-xs="25" flex-sm="25" style="margin-top:-22px">
+            <mdl-select (change)="onPeopleStoreChange(selectedStore)" [(ngModel)]="selectedStore">
+                <mdl-option *ngFor="let store of stores" [value]="store.id">{{store.shortName}}</mdl-option>
+            </mdl-select>
+         
+    
+        </div-->
+        <div  flex="70" class="pick-store" layout="row">
+        <div class="Store"> Pick a Store: </div>
+       <mdl-select (change)="onPeopleStoreChange(selectedStore)" [(ngModel)]="selectedStore">
+        <mdl-option *ngFor="let store of stores" [value]="store.id">{{store.shortName}}</mdl-option>
+        </mdl-select>
+         </div> 
+    
+        <div flex="20"></div>
+           <div flex="15" layout="row" layout-align="end center" style="margin-top: -12px;">
+        <div flex="5">
+            <app-filter (reload)="reload()" style="margin-left: -36px;"></app-filter>
+        </div>
+        <div class="download-icon">
+            <img (click)="onDownloadClick()" width="29" height="25" src="assets\img\download_on.png" >
+            <!--i class="material-icons" (click)="onDownloadClick()">cloud_download</i-->
+        </div>
+       
+    </div>
+        
+        <!--div flex="40" flex-xs="25" flex-sm="25" class="end">
+ </div-->
+  </div>
+
+    
+</div>

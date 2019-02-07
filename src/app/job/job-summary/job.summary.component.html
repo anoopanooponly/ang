@@ -1,0 +1,135 @@
+<div name ="main" class="row m-4">
+    <div name="leftCol" class="col-sm-4">
+        <div class="m-2">
+            <a [routerLink]=" ['/new-job/worker']"  draggable="false" class="btn btn-secondary my-2 my-sm-0"
+                    routerLinkActive='md-active' [routerLinkActiveOptions]= "{exact: true}">
+                Back
+            </a> 
+        </div>
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <span>Company & Location</span>
+                <a [routerLink]=" ['/new-job']"  draggable="false"
+                        class="btn btn-secondary text-muted">
+                    <i class="fa fa-pencil align-middle" aria-hidden="true"></i>
+                    <span class="ml-2 align-middle">Edit</span>
+                </a>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <span class="w-100 text-muted mt-2 mb-2">Company</span>
+                    <span>
+                        <img src="assets/images/face.png" class="rounded-circle img-thumbnail worker-avatar mr-2">
+                        {{job.company.name}}
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="w-100 text-muted mt-2 mb-2">Location</span>
+                    <address>
+                        <strong>{{location.name}}</strong><br>
+                        {{location.address}}<br> 
+                        {{location.city}}<br>
+                        {{location.province}}<br>
+                        {{location.country}}<br>
+                    
+                    </address>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div name="rightCol" class="col-sm-8">  
+        <div class="row m-2">
+            <div class="col-sm-9">
+                <div class="progress">
+                    <div class="progress-bar " style="width: 34%;background-color:#c1de7a" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar " role="progressbar" style="width: 34%;background-color:#96cb17" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: 32%;background-color:#29abe2" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">Job Details</div>
+                    <div class="col-sm-4">Workers</div>
+                    <div class="col-sm-4">Summary</div>
+                </div>
+            </div>
+            <div class="col-sm-3">    
+                <button class="btn btn-green my-2 my-sm-0"  (click)= "saveJob()" type="button">Save Job</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <span>Job Details</span>
+                <a [routerLink]=" ['/new-job']"  draggable="false"
+                        class="btn btn-secondary text-muted">
+                    <i class="fa fa-pencil align-middle" aria-hidden="true"></i>
+                    <span class="ml-2 align-middle">Edit</span>
+                </a>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="w-100 d-flex justify-content-between">
+                        <span>
+                            <img src="assets/images/face.png" class="rounded-circle img-thumbnail worker-avatar mr-2">
+                            Job Name <font class="text-muted">- {{job.name}}</font>
+                        </span>
+                        <span>
+                            ${{job.wage}} /hr                            
+                        </span>                            
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="w-100 row">
+                        <span class="col-sm-4">
+                            <img src="assets/images/face.png" class="rounded-circle img-thumbnail worker-avatar mr-2">
+                           {{job.selectedShift.name}}
+                        </span>
+                        <span class="col-sm-4 text-muted">
+                          {{getTimeIn12HrFormat(job.selectedShift.start)}} - {{getTimeIn12HrFormat(job.selectedShift.end)}}
+                        </span>
+                        <span class="col-sm-4">
+                            {{getShiftRepeatDesc(job.selectedShift)}}                     
+                        </span>                           
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row w-100 m-2">
+                        <span class="w-100 text-muted mb-2">Job Description</span>
+                        <p>
+                            {{job.desc}}
+                        </p>                          
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="card mt-4">
+            <div class="card-header d-flex justify-content-between">
+                <span>Workers Hired</span>
+                <a [routerLink]=" ['/new-job/worker']"  draggable="false"
+                        class="btn btn-secondary text-muted">
+                    <i class="fa fa-pencil align-middle" aria-hidden="true"></i>
+                    <span class="ml-2 align-middle">Edit</span>
+                </a>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let worker of job.selectedWorkers" >
+                    <div class="row w-100 justify-content-between">
+                        <div class="w-75 justify-content-between">
+                            <span class="m-2">
+                                <img [src]="worker.avatar" class="rounded-circle img-thumbnail worker-avatar mr-2">
+                                  {{worker.username}}
+                            </span>
+                            <span class="m-2 text-muted align-middle">
+                              {{worker.address.city}}, {{worker.address.country}}
+                            </span>
+                            <span class="m-2">
+                                <i class="fa fa-star ico-gold m-2" aria-hidden="true"></i>{{worker.reviews.avg}}
+                            </span>                          
+                        </div>                                        
+                        <div>
+                            <i class="m-2 fa fa-commenting fa-lg fa-border" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>        
+    </div>
+</div>

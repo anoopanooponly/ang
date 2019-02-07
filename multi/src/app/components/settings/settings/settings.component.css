@@ -1,0 +1,67 @@
+.main {
+    width: 250px;
+    height:190px;
+    padding-left: 0px;
+    padding-top: 0px;
+    margin-top: -18px;
+    border-radius: 2% 2% 2% 2%;
+    background: white;
+    box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    right: 36px;
+    padding: 0px;
+    z-index:1000000;
+}
+@media \screen\0 {
+    .main {
+    width: 250px;
+    height:190px;
+    padding-left: 0px;
+    padding-top: 0px;
+    margin-top: -36px;
+    border-radius: 2% 2% 2% 2%;
+    background: white;
+    box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    right: 36px;
+    padding: 0px;
+    z-index:1000000;
+}
+}
+
+@media \screen\9 {
+    .main {
+    width: 250px;
+    height:190px;
+    padding-left: 0px;
+    padding-top: 0px;
+    margin-top: -36px;
+    border-radius: 2% 2% 2% 2%;
+    background: white;
+    box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    right: 36px;
+    padding: 0px;
+    z-index:1000000;
+}
+}
+.div-link {
+   
+    background-color: #42b4e6;
+    height: 38px;
+    margin-top: 0px;
+    border-radius: 2% 2% 2% 2%;
+    -webkit-border-radius: 2% 2% 2% 2%;
+}
+.list{
+    background: white;
+}
+.list:hover{
+    background: #B8E7FB;
+}

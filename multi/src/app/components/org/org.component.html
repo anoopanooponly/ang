@@ -1,0 +1,15 @@
+<div class="outer-div">
+    <div>
+        <h3 class="mdl-dialog__title">Select Organization</h3>
+        <div class="mdl-dialog__content">Please select an organization to continue login.</div>
+        <div class="mdl-dialog__actions mdl-dialog__actions--full-width" ng-reflect-klass="mdl-dialog__actions">
+            <button style="text-align:center" class="mdl-button mdl-color-text--primary close" type="button" ng-reflect-klass="mdl-button mdl-color-text--primary" (click)="goToOrg('-1')">View All</button>
+        </div>
+        <div style="text-align: center;width: 97%;text-transform: uppercase;">
+            - or -
+        </div>
+        <div class="mdl-dialog__actions mdl-dialog__actions--full-width" ng-reflect-klass="mdl-dialog__actions" *ngFor="let item of orgList">
+            <button style="text-align:center" class="mdl-button mdl-color-text--primary close" type="button" ng-reflect-klass="mdl-button mdl-color-text--primary" (click)="goToOrg(item.recordId)">{{item.recordName}}</button>
+        </div>
+    </div>
+</div>

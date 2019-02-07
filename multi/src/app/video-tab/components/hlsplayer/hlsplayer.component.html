@@ -1,0 +1,126 @@
+<div id="playground" style="min-height:200px; margin-bottom:56px;" flex="100" layout="column" layout-align="start center">
+    <!--<div class="title-outer" flex="100">-->
+    <!--<div class="video-title" flex="50"> <b> {{selectedSiteName}} : {{selectedCameraName}}</b></div>
+        <div class="video-date" flex="50">{{titleDate}}</div>-->
+    <!--</div>-->
+    <div style="color: white; background: rgb(255, 255, 255);padding: 3px;  box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.3); background: white;">
+        <div style=" z-index: 1000;padding-left: 7px;color: black;font-size: 14px;">
+            <div class="video-title" style="width:73%"> <b> {{selectedSiteName}} : {{selectedCameraName}}</b></div>
+
+            <div>
+                <div style="float:left">{{titleDate}}</div>
+                <div style="text-align:right"><button style="margin-top: -6px;" mdl-button mdl-button-type="icon" (click)="closePlayer()">
+                                    <mdl-icon>close</mdl-icon>
+                                </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="playerContainer">
+            <div id="player-wrapper" style="width:100%;height:100%"></div>
+            <div class="media-control-new" id="playerControlContainer" (mouseover)="controlMouseOver()" (mouseover)="controlMouseOut()" [ngClass]="{'fullscreen-control': isFullScreen}" data-media-control style="background:black">
+                <div id="player-controls" class="media-control-layer" data-controls style='position: relative; top: 22px;'>
+                    <div class="bar-container" (mouseout)="mouseoutSeekBar($event)" (mousemove)="mousemoveOnSeekBar($event)" (click)="seek($event)" data-seekbar>
+                        <div class="bar-background" data-seekbar>
+                            <div class="bar-fill-1" data-seekbar></div>
+                            <div class="bar-fill-2" data-seekbar></div>
+                            <div class="bar-hover" data-seekbar></div>
+                        </div>
+                        <div class="bar-scrubber" (mousedown)="startSeekDrag($event)" (mouseup)="stopDrag($event)" data-seekbar>
+                            <div class="bar-scrubber-icon" data-seekbar></div>
+                        </div>
+                    </div>
+                    <div class="bar-container" data-timeline-bar style="background:rgb(124, 124, 124);height: 45px;cursor:pointer" (click)="seek($event)">
+                        <div flex="100" layout="row" layout-align="space-between end" style="font-size:11px;color:white;padding: 3px;">
+                            <div style="z-index:1;width:50%">{{startTime}}</div>
+                            <div style="z-index:1;width:50%;text-align:right">{{endTime}}</div>
+                        </div>
+                        <div flex="100" layout="row" style="font-size:11px;color:white;padding: 3px;">
+                            <div *ngIf="!motionloaded" style="margin-top: -28px;padding: 3px;position: absolute;width:100%;text-align: center;z-index:999999">
+                                <mdl-spinner style="width: 15px; height: 15px;" [active]="true"></mdl-spinner>
+                            </div>
+                            <div *ngFor="let record of recordingEvnts" [style.width]="record.width+ 'px'" [style.left]="record.left + '%'" style="background: rgb(176, 176, 176);height: 44px; margin-top: -28px;padding: 0px;position: absolute;"></div>
+
+                            <div *ngFor="let motion of motions" [style.width]="motion.width+ 'px'" [style.left]="motion.left + '%'" style="background: rgb(247, 204, 143);height: 44px; margin-top: -28px;padding: 0px;position: absolute;"></div>
+
+                            <div *ngFor="let evnt of exportEvnts" [style.width]="evnt.width+ 'px'" [style.left]="evnt.left + '%'" style="background: rgb(244, 160, 0);height: 44px; margin-top: -28px;padding: 0px;position: absolute;"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bar-container" layout="row" layout-align="start space-between-center" data-button-bar style="background:black;color:white;height: 65px;">
+                        <div class="btn-left" style="width:33%;text-align:left;padding-top:5px;">
+                            <div style="background: white; color: black;  height: 31px;  width: 42px;margin: 10px; font-size: 16px; text-align: center;font-weight: bold;cursor:pointer;line-height: 29px;" (click)="toggleSpeed()">{{speed}}X</div>
+                        </div>
+                        <div class="btn-middle" style="width:33%;text-align:center;margin-top: 5px;">
+                            <button *ngIf="!motionloaded" disabled style="color:grey;width:55px !important;height: 55px !important;" mdl-button mdl-button-type="icon" (click)="prevMotion()">
+                  <mdl-icon style="font-size: 45px !important;">skip_previous</mdl-icon>
+                </button>
+                            <button *ngIf="motionloaded" style="width:55px !important;height: 55px !important;" mdl-button mdl-button-type="icon" (click)="prevMotion()">
+                  <mdl-icon style="font-size: 45px !important;">skip_previous</mdl-icon>
+               </button>
+
+                            <button *ngIf="!isPlaying && motionloaded" style="width:55px !important;height: 55px !important;" (click)="play()" mdl-button mdl-button-type="icon">
+                 <mdl-icon style="font-size: 45px !important;">play_arrow</mdl-icon>
+                </button>
+                            <!--<button *ngIf="!motionloaded" disabled style="color:grey" mdl-button mdl-button-type="icon">
+                 <mdl-icon >play_arrow</mdl-icon>
+                </button>-->
+
+                            <button *ngIf="isPlaying && motionloaded" style="width:55px !important;height: 55px !important;"(click)="stop()" mdl-button mdl-button-type="icon">
+                 <mdl-icon style="font-size: 45px !important;" >pause</mdl-icon>
+                </button>
+                            <button *ngIf="!motionloaded" disabled style="color:grey;width:55px !important;height: 55px !important;" mdl-button mdl-button-type="icon">
+                 <mdl-icon style="font-size: 45px !important;" >pause</mdl-icon>
+                </button>
+                            <button *ngIf="!motionloaded" disabled style="color:grey;width:55px !important;height: 55px !important;" mdl-button mdl-button-type="icon" (click)="nextMotion()">
+                  <mdl-icon class="material-icons"style="font-size: 45px !important;">skip_next</mdl-icon>
+                </button>
+                            <button *ngIf="motionloaded" mdl-button mdl-button-type="icon" style="width:55px !important;height: 55px !important;" (click)="nextMotion()">
+                  <mdl-icon class="material-icons"style="font-size: 45px !important;">skip_next</mdl-icon>
+                </button>
+
+                        </div>
+                        <div class="btn-right">
+                            <button id="fullscreen" *ngIf="!motionloaded" disabled style="color:grey;" mdl-button mdl-button-type="icon" (click)="gotoFullScreen()">
+                  <mdl-icon style="font-size: 45px !important;">fullscreen</mdl-icon>
+          </button>
+          <!--style=";margin-top: -26px !important;width: 65px !important; height: 62px !important"                style="width:33%;text-align:right;margin-top: 26px;"-->
+                            <button  id="fullscreen" *ngIf="motionloaded" mdl-button mdl-button-type="icon" (click)="gotoFullScreen()">
+                  <mdl-icon style="font-size: 45px !important;">fullscreen></mdl-icon>
+          </button>
+                            <button   *ngIf="!motionloaded" disabled style="color:grey;margin-top: -35px !important;width: 74px !important; height: 74px !important" mdl-button mdl-button-type="icon" (click)="gotoLive()">
+                  <mdl-icon style="font-size: 45px !important;">live_tv</mdl-icon>
+          </button>
+                            <button *ngIf="motionloaded" mdl-button mdl-button-type="icon" (click)="gotoLive()"style=";margin-top: -35px !important;width: 74px !important; height: 74px !important">
+                  <mdl-icon style="font-size: 45px !important;">live_tv</mdl-icon>
+          </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--player thumbnail-->
+                <div class="scrub-thumbails" style="position: relative; top: -99px;" [style.opacity]="thumbnailOpacity">
+                    <div class="backdrop" style="position: relative;; left: 0; bottom: 0; right: 0; background-color: #000;overflow: hidden;opacity: 0;">
+                        <div class="carousel" style="position: absolute; top: 0; left: 0; height: 100%; white-space: nowrap;" *ngIf="thumbs.length > 0">
+                            <div style="display: inline-block;  position: relative;  overflow: hidden;background-color: #000;" *ngFor="let tmb of thumbs">
+                                <img class="thumbnail-img" [src]="tmb.lowResUrl" style="height: 64px; left: 0px; top: 0px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spotlight" style="background-color: #000; overflow: hidden;position: relative; bottom: 0; left: 0;width:115px;border: 2px solid #fff;">
+                        <div style="display: inline-block;  position: relative;  overflow: hidden;background-color: #000;width:150px;min-height:64px;">
+                            <img class="thumbnail-img" *ngIf="thumbs.length > 0" [src]="selectedThumb.lowResUrl" style="height: 64px; left: 0px; top: 0px;">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

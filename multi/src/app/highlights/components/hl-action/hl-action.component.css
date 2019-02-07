@@ -1,0 +1,84 @@
+.actionContent {
+    background-color: #e8e8e8;
+    height: 55px;
+    z-index: 999;
+    width: 100%;
+    border-bottom: 1px solid gainsboro;
+    position: fixed;
+    left: 0px;
+    -webkit-transform: translate3d(0, 0, 0)
+}
+
+.action-inner {
+    padding-left: 16px;
+    padding-top: 8px;
+    width: 100%;
+}
+
+.ddl {
+    margin-top: -7px;
+}
+
+.title {
+    margin-top: 15px;
+    margin-left: -35px;
+    font-size: 18px;
+}
+
+button {
+    background: none!important;
+    border: none;
+    font: inherit;
+    color: black!important;
+    cursor: pointer;
+    padding-top: 17px;
+    text-decoration: underline;
+}
+
+.download-icon {
+    text-align: right;
+    margin-top: 18px;
+    margin-right: -10px;
+    cursor: pointer;
+}
+
+.groupbylabel {
+    float: left;
+    text-align: right;
+    margin-top: 16px;
+    padding-right: 5px;
+    font-size: 17px;
+}
+
+.groupby {
+    float: left;
+    width: 100%;
+    margin-top: -13px;
+    padding-left: 34.45%;
+}
+
+.filter-div {
+    padding-right: 26px;
+    text-align: right;
+}
+
+.backarrow {
+    text-align: center;
+    margin-top: -5px;
+    float: left;
+}
+
+
+/*.count-div {
+    text-align: right;
+    font-size: 16px;
+    color: #04b4ed;
+    margin-right: 26px;
+    margin-top: -21px;
+}
+
+.circle {
+    font-size: 50px;
+    margin-right: -11px;
+    margin-top: -24px;
+}*/

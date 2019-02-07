@@ -1,0 +1,393 @@
+video::-webkit-media-controls-fullscreen-button {
+    display: none;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: .5;
+    }
+    30% {
+        opacity: .75;
+    }
+    50% {
+        opacity: 1;
+    }
+    70% {
+        opacity: .75;
+    }
+    90% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.selection:hover .player-icon {
+    opacity: 1;
+    transition: opacity .25s ease-in;
+    -moz-transition: opacity .25s ease-in;
+    -webkit-transition: opacity .25s ease-in;
+    -o-transition: opacity .25s ease-in;
+}
+
+
+/*
+  animation: show 3s ease-in;
+}*/
+
+.thumbnail,
+.download-icon-on,
+.download-icon,
+.player-icon {
+    cursor: pointer;
+}
+
+.player-icon {
+    margin-left: 43%;
+    margin-top: 20.5%;
+    z-index: 999;
+    position: absolute;
+    width: 62px;
+    height: 62px;
+    opacity: 0;
+    transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
+}
+
+.download-icon,
+.download-icon-on {
+    margin-left: 2%;
+    margin-top: 2%;
+    z-index: 990;
+    position: absolute;
+    width: 33px;
+    height: 33px;
+    opacity: .4;
+    transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
+}
+
+@keyframes show-hide {
+    0% {
+        opacity: .4;
+    }
+    10% {
+        opacity: .6;
+    }
+    30% {
+        opacity: .75;
+    }
+    50% {
+        opacity: 1;
+    }
+    70% {
+        opacity: .75;
+    }
+    90% {
+        opacity: .5;
+    }
+    100% {
+        opacity: .4;
+    }
+}
+
+.selection:hover .download-icon {
+    /*  animation: show-hide 3s ease-in;*/
+    opacity: .7;
+    transition: opacity .25s ease-in;
+    -moz-transition: opacity .25s ease-in;
+    -webkit-transition: opacity .25s ease-in;
+    -o-transition: opacity .25s ease-in;
+}
+
+.selection:hover .download-icon-on {
+    opacity: .7;
+    transition: opacity .25s ease-in;
+    -moz-transition: opacity .25s ease-in;
+    -webkit-transition: opacity .25s ease-in;
+    -o-transition: opacity .25s ease-in;
+}
+
+.clip-status {
+    font-size: 16px;
+    color: white;
+    padding-left: 50%;
+    padding-top: 25%;
+    position: absolute;
+    z-index: 900;
+}
+
+.status-inner {
+    background: black;
+    padding-top: 3px;
+    margin-left: -18px;
+}
+
+.offline-img {
+    position: absolute;
+    top: 58px;
+    left: 155px;
+    z-index: 101;
+}
+
+a {
+    font-size: 16px;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    margin-right: 8px;
+}
+
+li:nth-of-type(2n) {
+    margin-right: 0;
+}
+
+.progress {
+    margin-top: 22%;
+}
+
+@media screen and (min-width: 300px) {
+    .progress {
+        margin-top: 22%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    .progress {
+        margin-top: 22%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .progress {
+        margin-top: 22%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .progress {
+        margin-top: 22%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .progress {
+        margin-top: 22%;
+        margin-left: 0%;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .progress {
+        margin-top: 22%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .progress {
+        margin-top: 22%;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .progress {
+        margin-top: 22%;
+    }
+}
+
+
+/*img:hover {
+    transform: scale(1.05);
+}*/
+
+img {
+    transition: transform .2s ease-in-out;
+}
+
+figure {
+    margin: 0;
+}
+
+.imgContainer {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 55%;
+}
+
+.spinner-div {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+img.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+}
+
+img.content:hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .75;
+    transition: opacity .25s ease-in;
+    -moz-transition: opacity .25s ease-in;
+    -webkit-transition: opacity .25s ease-in;
+    -o-transition: opacity .25s ease-in;
+}
+
+.contentZIndex {
+    z-index: 100;
+}
+
+.selection.on {
+    border-color: #41b4e6;
+    margin: -3px;
+    border-style: solid;
+    border-width: 3pt;
+}
+
+.selection.off {
+    border-style: none;
+    margin: 0px;
+}
+
+.selection {
+    /* any shared styles */
+}
+
+.boxStyle {
+    background: rgba(253, 253, 253, 0.7);
+    box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 300px) {
+    .box {
+        width: calc(90%);
+    }
+}
+
+@media screen and (min-width: 400px) {
+    .box {
+        width: calc(95%);
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .box {
+        width: calc(95%);
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .box {
+        width: calc(48%);
+        margin: 5px;
+    }
+    .box:nth-of-type(2n+3) {
+        clear: left;
+    }
+}
+
+@media screen and (min-width: 900px) and (max-width: 958px) {
+    .box {
+        width: calc(30%);
+        margin: 6px;
+    }
+    .box:nth-of-type(3n+4) {
+        clear: left;
+    }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+    .box {
+        width: calc(48%);
+        margin: 9px;
+    }
+    .box:nth-of-type(2n+3) {
+        clear: left;
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1499px) {
+    .box {
+        width: calc(24%);
+        margin: 5px;
+    }
+    .box:nth-of-type(4n+5) {
+        clear: left;
+    }
+}
+
+@media screen and (min-width: 1500px) and (max-width: 1679px) {
+    .box {
+        width: calc(24%);
+        margin: 7px;
+    }
+    .box:nth-of-type(4n+5) {
+        clear: left;
+    }
+}
+
+@media screen and (min-width: 1680px) and (max-width: 1899px) {
+    .box {
+        width: calc(24%);
+        margin: 7px;
+    }
+    .box:nth-of-type(4n+5) {
+        clear: left;
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .box {
+        width: calc(24%);
+        margin: 8px;
+    }
+    .box:nth-of-type(4n+5) {
+        clear: left;
+    }
+}
+
+.box {
+    float: left;
+}
+
+
+/*a:hover img {
+    transform: scale(1.15);
+}*/
+
+figure {
+    margin: 0;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 3px;
+    text-align: center;
+}

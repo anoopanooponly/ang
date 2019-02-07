@@ -1,0 +1,88 @@
+<div>
+  <div>
+    <app-people-action></app-people-action>
+  </div>
+
+
+  <div class="center" style="margin-top: -41px;">
+    <div class="reportCriteriaPanel" layout-xs="column" style="margin-top:52px ;margin-bottom: 6px;" flex="100"
+      layout="row">
+      <div layout="row" flex-gt-sm="25" flex="100">
+        <div flex="50" flex-xs="25" flex-sm="25" style=" padding-top: 28px;  font-size: medium; ">
+          Report by:
+        </div>
+        <div class="reportby" flex="50" >
+          <mdl-select  [(ngModel)]="selectedReportedBy">
+            <mdl-option value="day">Day</mdl-option>
+            <mdl-option value="week">Week</mdl-option>
+            <mdl-option value="month">Month</mdl-option>
+          </mdl-select>
+        </div>
+      </div>
+
+      <div class="from-div" flex-gt-sm="25" flex="100" layout="row" >
+        <div class="from" flex="25">From:</div>
+        <div class="cal-div">
+           <my-date-range-picker [isRange]="false" [options]="myDateRangePickerOptionsNormal" [isDateDisplay]="true" (dateRangeChanged)="onDateRangeChangedFrom($event)" 
+         [selDateRange]="selectedDateRangeNormalFrom" 
+        ></my-date-range-picker>
+        </div>
+        
+      </div>
+
+      <div class="to-div" flex-gt-sm="25" flex="100" layout="row">
+        <div class="to" flex="25">To:</div>
+        <div class="cal-div">
+             <my-date-range-picker [isRange]="false" [options]="myDateRangePickerOptionsNormal" [isDateDisplay]="true" (dateRangeChanged)="onDateRangeChangedTo($event)" 
+         [selDateRange]="selectedDateRangeNormalTo" 
+        ></my-date-range-picker>
+        </div>
+    
+      </div>
+      <div class="runreport" flex-gt-sm="25" flex="100">
+        <button mdl-button mdl-button-type="raised" mdl-colored="accent"   mdl-ripple (click)="runReport()">
+    Run Report
+  </button>
+      </div>
+      
+    </div>
+    <div style="color:red" ng-if="dateValidationErr">
+         {{dateValidationMsg}}
+      </div>
+   
+
+
+    <section class="section-div">
+  <div class="container">
+    <table border="1">
+      <thead>
+         <tr class="header">
+          <th class="mdl-data-table__cell--non-numeric" *ngFor="let header of headers;let i=index" 
+            (click)="sortBy(i)" data-sort="material">{{header.displayName}}<div class="sort" [ngClass]="{'asc': header.sort == 1, 'desc': header.sort == 0}">{{header.displayName}}</div></th>
+        </tr>
+       </thead>
+       
+      <tbody>
+        <tr *ngIf="!loaded">
+          <td colspan="3" style="text-align:center;background:white"><mdl-spinner class="progress contentZIndex" [active]="true"></mdl-spinner></td>
+        </tr>
+         <tr *ngIf="!reportRun">
+          <td colspan="3" style="text-align:center;background:white">Please choose a report type and a date range, then click Run Report.</td>
+        </tr>
+        <tr *ngIf="reportRun && loaded && list.length == 0">
+          <td colspan="3" style="text-align:center;background:white">No result match your search criteria.</td>
+        </tr>
+        <tr *ngFor="let item of list">
+          <td class="mdl-data-table__cell--non-numeric material">{{item.siteName}}</td>
+          <td class="quantity">{{item.date}}</td>
+          <td class="price"   *ngIf="isNan(item.count)" mdl-tooltip="Error in Access" mdl-tooltip-position="below">0
+          </td>
+          <td class="price" *ngIf="!isNan(item.count)">{{item.count}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+  </div>
+
+</div>

@@ -1,0 +1,52 @@
+<div class="actionContent" [style.right]="rightPos + 'px'">
+    <div class="action-inner" layout="row" flex="100">
+        <div *ngIf="libraryService.seeMoreBackButtonOn" flex="5" style="text-align: center; margin-top: -5px;">
+            <button mdl-tooltip="go back" (click)="onBackClick()" [hidden]="!libraryService.seeMoreBackButtonOn">
+                <mdl-icon >arrow_back</mdl-icon> </button>
+        </div>
+        <!--<div flex="10" class="title" style="text-align:left">Library</div>-->
+        <div class="radio-div" layout="row" flex="20">
+            <div [ngClass]="{selectedRadio: hasAllRadioSelected, unSelectedRadio: !hasAllRadioSelected}" class="all-radio">
+                <mdl-radio style="font-size:17px !important;" name="group1" value="0" [(ngModel)]="mode" mdl-ripple (change)="onAllRadioChange()">Show All</mdl-radio>
+            </div>
+            <div [ngClass]="{selectedRadio: hasPrivateRadioSelected, unSelectedRadio: !hasPrivateRadioSelected}" class="private-radio">
+                <mdl-radio style="font-size:17px !important;" name="group2" value="1" [(ngModel)]="mode" mdl-ripple (change)="onPrivateRadioChange()">Private</mdl-radio>
+            </div>
+            <div [ngClass]="{selectedRadio: hasSharedRadioSelected, unSelectedRadio: !hasSharedRadioSelected}" class="shared-radio">
+                <mdl-radio style="font-size:17px !important;" name="group3" value="2" [(ngModel)]="mode" mdl-ripple (change)="onSharedRadioChange()">Shared</mdl-radio>
+            </div>
+        </div>
+        <!--<mdl-select *ngIf="libraryService.visibilityComboShow" flex="20" (change)="onChangeVisibility(selectedVisibility)" class="ddl" placeholder="{{selectedVisibility}}" [(ngModel)]="selectedVisibility">
+            <mdl-option value="ShowAll">Show All(Private & Shared)</mdl-option>
+            <mdl-option value="Shared">Shared with Organization</mdl-option>
+            <mdl-option value="OnlyMe">Visible Only to Me</mdl-option>
+        </mdl-select>-->
+        <div *ngIf="!libraryService.visibilityComboShow" flex="20"></div>
+
+        <div flex="70" class="group-div" layout="row">
+            <!--<div class="groupby"> Group by: </div>-->
+            <label class="groupby">Group by:</label>
+            <mdl-select (change)="onChangeGrouping(selectedGroup)" class="ddl" [(ngModel)]="selectedGroup">
+                <mdl-option value="Ungrouped">Ungrouped</mdl-option>
+                <mdl-option value="StoreName">Store Name</mdl-option>
+                <mdl-option value="TimeOfClip">Date/Time of Clip</mdl-option>
+                <mdl-option value="TimeCreated">Date/Time Created</mdl-option>
+            </mdl-select>
+        </div>
+
+        <div flex="20"></div>
+
+        <div flex="15" layout="row" layout-align="end center">
+            <!--<div class="download-icon">
+                <i class="material-icons" mdl-badge="{{libraryService.selectedItemCount}}" (click)="onDownloadClick()">cloud_download</i>
+            </div>-->
+            <!--div class="download-icon">
+                <i class="material-icons" mdl-badge="{{libraryService.selectedItemCount}}" (click)="sendMail()">email</i>
+            </div-->
+        </div>
+
+        <div flex="5" class="filter-div" *ngIf="libraryService.visibilityComboShow">
+            <app-filter (reload)="reload()"></app-filter>
+        </div>
+    </div>
+</div>

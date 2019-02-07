@@ -1,0 +1,30 @@
+<div class="actionbar">
+    <lib-action *ngIf="!libraryservice.downloadBarActive">Loading Lib Action..</lib-action>
+    <lib-download *ngIf="libraryservice.downloadBarActive">Loading Lib Download..</lib-download>
+</div>
+<div class="outer-div">
+    <!--<div id="player-div">
+        <router-outlet></router-outlet>
+    </div>-->
+    <div *ngIf="libraryservice.PageName == 'Ungrouped'">
+        <lib-ungrouped></lib-ungrouped>
+    </div>
+    <div *ngIf="libraryservice.PageName == 'StoreName'">
+        <lib-store-list></lib-store-list>
+    </div>
+    <div *ngIf="libraryservice.PageName == 'SeeMore'">
+        <lib-see-more></lib-see-more>
+    </div>
+    <div *ngIf="libraryservice.PageName == 'TimeOfClip'">
+        <lib-cliptime-list></lib-cliptime-list>
+    </div>
+    <div *ngIf="libraryservice.PageName == 'TimeCreated'">
+        <lib-cliptime-list></lib-cliptime-list>
+    </div>
+    <div *ngIf="libraryservice.PageName == 'SeeMoreClipDate'">
+        <lib-seemore-datewise></lib-seemore-datewise>
+    </div>
+    <div *ngIf="libraryservice.PageName == 'SeeMoreCreatedDate'">
+        <lib-seemore-datewise></lib-seemore-datewise>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div>
+<router-outlet id="roterOutlet"></router-outlet>
+</div>
+<!--div   [@visibilityChanged]="actionService.isPlayer"-->
+<div *ngIf="heatmapService.heatmapOn && cameras != null && cameras.length > 0" class="heatmpaDateRange"><b>{{ heatmapService.selectedDateRangeInGallery }}</b></div>
+<div style="overflow:hidden">
+    <div *ngIf="cameras == null || cameras.length <= 0">
+        <p style="text-align:center;color:#b2b3b3;">No camera details to be displayed.</p>
+    </div>
+
+    <div *ngFor="let item of cameras" class="box {{item.expanded ? 'is-expanded' : 'is-collapsed'}}">
+        <div >
+            <image-loader [src]="item" srcAttr="thumbnailUrl" (onLoaded)="onLoaded($event)" (onDefaultLoaded)="onDefaultLoaded($event)" (onImageClicked)="onImageClicked($event)"></image-loader>
+
+            <p style="text-align:center;margin-bottom: 1px;margin-top: -8px;" *ngIf="defaultLoadedCnt > 0">
+                <span style="font-weight: bold">{{item.name}}</span><br>
+                <!--<span *ngIf="item.storeName">{{item.description}}</span>-->
+                <span *ngIf="!heatmapService.heatmapOn">{{item.description}}</span>
+            </p>
+        </div>
+        <!--<div class="image--expand" id="videoDisplayPanel" style="margin-top:5px;margin-bottom:5px" >
+          <div *ngIf="item.expanded">
+           <hls-player [src]="selectedItem"></hls-player>
+            [ngClass]="{'boxStyle': (defaultLoadedCnt > 0)}"
+          </div>
+          
+    </div>-->
+    </div>
+</div>
+<!--/div-->

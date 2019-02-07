@@ -1,0 +1,17 @@
+<div>
+    <!--<div class="img-div">-->
+    <div [ngClass]="{heatOn: heatmapService.heatmapOn, heatOff: !heatmapService.heatmapOn}">
+        <img (click)="onHeatmapClick()" width="16.5" height="25" src="{{getHeatmapImage()}}" class="heat-icon" />
+        <img (click)="onCalendarClick()" [hidden]="calendarIconHidden" width="25" height="25.67" src="assets/img/calendar.png" class="calendar-icon" />
+    </div>
+    <div class="calendar" *ngIf="heatmapService.calendarPopupOn">
+        <heatmap-calendar [clicked]="clicked" (buttonClicked)="calenderDoneButtonClick($event)"></heatmap-calendar>
+    </div>
+
+</div>
+<!--<div id="datepickr-calendar-2"></div>
+<script>
+    $("#datepickr-calendar-2").DatePickr({
+        draggable: true
+    });
+</script>-->

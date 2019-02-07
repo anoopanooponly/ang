@@ -1,0 +1,15 @@
+<div class="outer">
+    <div class="wrapper">
+        <div class="close-div">
+            <button mdl-button mdl-button-type="icon" (click)="close()">
+        <mdl-icon>close</mdl-icon>
+        </button>
+        </div>
+        <div class="spinner">
+            <mdl-spinner *ngIf="!loaded" class="progress contentZIndex" [active]="true"></mdl-spinner>
+        </div>
+        <div class="range-div"> {{heatmapService.selectedDateRangeLarge}} </div>
+        <img src="assets/img/thumbnail-error-small.png" [hidden]="!imageError" alt="">
+        <img [src]="heatmapLargeUrl" (error)="onError()" [hidden]="imageError" (load)="onload()" />
+    </div>
+</div>

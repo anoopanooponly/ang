@@ -1,0 +1,9 @@
+<a>
+    <div class="imgContainer">
+        <mdl-spinner *ngIf="!loaded && defaultLoaded" class="progress contentZIndex" [active]="true"></mdl-spinner>
+        <img class="content contentZIndex" [hidden]="!loaded" (error)="onError()" (click)="onImgClick()" (load)="onload()" [src]="src[srcAttr]" />
+        <img class="content" style="background-color:black" (load)="onDefautload()" src="assets/img/thumbnail-placeholder-transparent-small.png" />
+        <img *ngIf="!src.isOnline" src="assets/img/cam-offline.png" class="offline-img" />
+
+    </div>
+</a>

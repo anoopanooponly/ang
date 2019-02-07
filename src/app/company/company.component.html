@@ -1,0 +1,49 @@
+<div name ="main" class="m-4">
+    <div class="row mt-2">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active">Company</li>
+            </ol>
+        </div>
+        <div class="col-sm-3 d-flex justify-content-between">
+            <select class="form-control" id="sort" [(ngModel)]="sort" (ngModelChange)="onSortChange($event)">
+                <option value="">Sort By</option>
+                <option value="name">Name</option>
+            </select>
+            <div>
+                <button type="button" class="btn btn-success ml-3" (click)="newCompany()">New Company</button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <ul class="list-group w-100 pl-3 pr-3">
+            <li class="list-group-item" 
+                *ngFor="let item of companyList; let currentElementIndex = index"> 
+                <div class="row w-100 justify-content-between">
+                    <div class="row w-75 m-2">
+                        <span class="col w-25" (click)="toggleEditMode(currentElementIndex)">                                
+                            {{item.name}}
+                        </span>
+                        <span class="col w-25 text-muted">
+                            {{item.address}}
+                        </span>
+                        <span class="col w-25 text-muted">
+                            {{item.province}}
+                        </span>
+                        <span class="col w-25 text-muted">
+                            {{item.postalCode}}
+                        </span>
+                    </div>
+                    <span>
+                        <button type="button" class="btn btn-secondary" (click)="toggleEditMode(currentElementIndex)">
+                        <i class="fa fa-pencil-square-o"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary" (click)="removeCompany(item._id)">
+                        <i class="fa fa-trash-o"></i>
+                        </button>
+                    </span>
+                </div>
+            </li>                
+        </ul> 
+    </div>
+</div>
